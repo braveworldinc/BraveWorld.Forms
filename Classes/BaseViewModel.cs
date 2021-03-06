@@ -58,7 +58,7 @@ namespace BraveWorld.Forms.Classes
     public class BaseViewModel<TDataService> : INotifyPropertyChanged
         where TDataService : BaseDataService
     {
-        protected TDataService DataStore;
+        protected TDataService DataService;
 
         #region Properties
         private bool _isBusy = false;
@@ -78,7 +78,7 @@ namespace BraveWorld.Forms.Classes
 
         public BaseViewModel()
         {
-            DataStore = DependencyService.Get<TDataService>();
+            DataService = DependencyService.Get<TDataService>();
         }
 
 
