@@ -13,24 +13,34 @@ namespace BraveWorld.Forms.Classes
 
 
 
-        private static string GenerateEventName(string propertyName) => $"{propertyName}Changed";
+        public static string GenerateEventName(string propertyName) => $"{propertyName}Changed";
 
         public static void Set(string key, string value)
         {
-            string eventName = GenerateEventName(key);
-            Preferences.Set(key, value);
-            MessagingCenter.Send(new object(), eventName, key);
+            string oldValue = Preferences.Get(key, null);
+
+            if (oldValue != value && !string.IsNullOrEmpty(value))
+            {
+                string eventName = GenerateEventName(key);
+                Preferences.Set(key, value);
+                MessagingCenter.Send(new object(), eventName, key);
+            }
         }
 
         public static void Set<TSender>(TSender sender, string key, string value, bool showAlert = false) where TSender : Page
         {
-            string eventName = GenerateEventName(key);
+            string oldValue = Preferences.Get(key, null);
 
-            Preferences.Set(key, value);
-            MessagingCenter.Send(sender, eventName, key);
+            if (oldValue != value && !string.IsNullOrEmpty(value))
+            {
+                string eventName = GenerateEventName(key);
 
-            if (showAlert)
-                sender.DisplayAlert($"{key} Updated", $"Value: {value}", "Okay");
+                Preferences.Set(key, value);
+                MessagingCenter.Send(sender, eventName, key);
+
+                if (showAlert)
+                    sender.DisplayAlert($"{key} Updated", $"Value: {value}", "Okay");
+            }
         }
 
 
