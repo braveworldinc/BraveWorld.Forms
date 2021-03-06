@@ -2,7 +2,6 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 
 namespace BraveWorld.Forms.Controls
 {
@@ -70,7 +69,6 @@ namespace BraveWorld.Forms.Controls
             //    }
             //};
             this.Title = "Meh";
-            NavigationPage.SetHasNavigationBar(this, false);
             GeneratePages();
         }
 
@@ -79,6 +77,7 @@ namespace BraveWorld.Forms.Controls
             base.OnAppearing();
 
             NavigationPage.SetHasNavigationBar(this, false);
+            Xamarin.Forms.PlatformConfiguration.iOSSpecific.NavigationPage.SetPrefersLargeTitles(Master, true);
         }
 
 
