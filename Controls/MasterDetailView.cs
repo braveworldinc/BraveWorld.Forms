@@ -137,12 +137,12 @@ namespace BraveWorld.Forms.Controls
         //    //}
         //}
 
-        public void OpenDetail(Page page)
+        public void OpenDetail<T>(T page) where T : Page
         {
             if (ShouldUseTabletLayout)
-                _detailNavigation.PushAsync(page);
+                _detailNavigation.PushAsync(page, false);
             else
-                this.PushAsync(page);
+                this.PushAsync(page, true);
 
         }
 
