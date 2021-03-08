@@ -2,12 +2,15 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
+using BraveWorld.Forms;
 
 namespace BraveWorld.Forms.Controls
 {
     [ContentProperty("Master")]
     public class MasterDetailView : NavigationPage
     {
+        #region Properties
         public static readonly BindableProperty MasterProperty = BindableProperty.Create(
             propertyName: nameof(Master),
             returnType: typeof(ContentPage),
@@ -51,6 +54,21 @@ namespace BraveWorld.Forms.Controls
         //}
 
 
+        public static readonly BindableProperty SeparatorColorProperty = BindableProperty.Create(
+            propertyName: nameof(SeparatorColor),
+            returnType: typeof(Color),
+            declaringType: typeof(MasterDetailView),
+            defaultValue: Color.DarkGray,
+            defaultBindingMode:BindingMode.TwoWay
+        );
+
+        public Color SeparatorColor
+        {
+            get => (Color)GetValue(SeparatorColorProperty);
+            set => SetValue(SeparatorColorProperty, value);
+        }
+        #endregion
+
 
         private NavigationPage _masterNavigation;
         private NavigationPage _detailNavigation;
@@ -62,15 +80,12 @@ namespace BraveWorld.Forms.Controls
 
         public MasterDetailView()
         {
-            //Content = new StackLayout
-            //{
-            //    Children = {
-            //        new Label { Text = "Hello ContentPage" }
-            //    }
-            //};
             this.Title = "Meh";
+            Application.Current.RequestedThemeChanged += Current_RequestedThemeChanged;
+
             GeneratePages();
         }
+
 
         protected override void OnAppearing()
         {
@@ -79,11 +94,6 @@ namespace BraveWorld.Forms.Controls
             NavigationPage.SetHasNavigationBar(this, false);
             Xamarin.Forms.PlatformConfiguration.iOSSpecific.NavigationPage.SetPrefersLargeTitles(Master, true);
         }
-
-
-
-
-
 
         private void GeneratePages()
         {
@@ -100,12 +110,31 @@ namespace BraveWorld.Forms.Controls
 
                 flyout.Flyout = _masterNavigation;
                 flyout.Detail = _detailNavigation;
+                //flyout.BackgroundColor = SeparatorColor;
+
+                UpdateAppearance();
 
                 ReplaceRoot(this, flyout);
             }
             else
             {
+                // TBD
+            }
+        }
 
+
+        private void Current_RequestedThemeChanged(object sender, AppThemeChangedEventArgs e)
+        {
+            UpdateAppearance();
+        }
+
+
+        private void UpdateAppearance()
+        {
+            if(flyout != null)
+            {
+                //flyout.SetAppThemeColor(FlyoutPage.BackgroundColorProperty, SystemColors.Gray.DarkColor, SeparatorColorDark);
+                flyout.SetAppThemeColor(FlyoutPage.BackgroundColorProperty, SystemColors.Gray4);
             }
         }
 
@@ -117,7 +146,7 @@ namespace BraveWorld.Forms.Controls
             {
                 var root = navigationPage.Navigation.NavigationStack[0];
                 navigationPage.Navigation.InsertPageBefore(page, root);
-                await navigationPage.PopToRootAsync();
+                await navigationPage.PopToRootAsync(animated:false);
             }
             else
             {
@@ -140,7 +169,7 @@ namespace BraveWorld.Forms.Controls
         public void OpenDetail<T>(T page) where T : Page
         {
             if (ShouldUseTabletLayout)
-                _detailNavigation.PushAsync(page, false);
+                ReplaceRoot(_detailNavigation, page);
             else
                 this.PushAsync(page, true);
 
@@ -155,6 +184,9 @@ namespace BraveWorld.Forms.Controls
 
             if (propertyName == DetailProperty.PropertyName)
                 ReplaceRoot(_detailNavigation, Detail);
+
+            //if (propertyName == SeparatorColorProperty.PropertyName && flyout != null)
+            //    flyout.BackgroundColor = SeparatorColor;
         }
     }
 }
