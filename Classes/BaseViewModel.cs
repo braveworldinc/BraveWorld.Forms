@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace BraveWorld.Forms.Classes
@@ -53,6 +54,23 @@ namespace BraveWorld.Forms.Classes
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+
+
+        public async Task DisplayAlert(string title, string message, string cancel)
+        {
+            await Application.Current.MainPage.DisplayAlert(title, message, cancel);
+        }
+
+        public async Task DisplayAlert(string title, string message, string accept, string cancel = "Cancel")
+        {
+            await Application.Current.MainPage.DisplayAlert(title, message, accept, cancel);
+        }
+
+        public static async Task ShowException(Exception e)
+        {
+            await Application.Current.MainPage.DisplayAlert("Exception Thrown", e.Message, "Great...");
+        }
     }
 
     public class BaseViewModel<TDataService> : INotifyPropertyChanged
@@ -106,5 +124,22 @@ namespace BraveWorld.Forms.Classes
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+
+
+        public async Task DisplayAlert(string title, string message, string cancel)
+        {
+            await Application.Current.MainPage.DisplayAlert(title, message, cancel);
+        }
+
+        public async Task DisplayAlert(string title, string message, string accept, string cancel = "Cancel")
+        {
+            await Application.Current.MainPage.DisplayAlert(title, message, accept, cancel);
+        }
+
+        public static async Task ShowException(Exception e)
+        {
+            await Application.Current.MainPage.DisplayAlert("Exception Thrown", e.Message, "Great...");
+        }
     }
 }
