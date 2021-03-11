@@ -11,4 +11,9 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Extensions\FormsExtensions.cs">
+      <IncludeInPackage>true</IncludeInPackage>
+    </Compile>
+  </ItemGroup>
 </Project>
