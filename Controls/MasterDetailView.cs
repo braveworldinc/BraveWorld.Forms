@@ -80,7 +80,6 @@ namespace BraveWorld.Forms.Controls
 
         public MasterDetailView()
         {
-            this.Title = "Meh";
             Application.Current.RequestedThemeChanged += Current_RequestedThemeChanged;
 
             GeneratePages();
@@ -152,6 +151,7 @@ namespace BraveWorld.Forms.Controls
             {
                 await navigationPage.Navigation.PushAsync(page, false);
             }
+            navigationPage.Title = page.Title;
         }
 
         //public new async Task PopToRootAsync()
@@ -169,7 +169,10 @@ namespace BraveWorld.Forms.Controls
         public void OpenDetail<T>(T page) where T : Page
         {
             if (ShouldUseTabletLayout)
+            {
                 ReplaceRoot(_detailNavigation, page);
+                flyout.IsPresented = false;
+            }
             else
                 this.PushAsync(page, true);
 
