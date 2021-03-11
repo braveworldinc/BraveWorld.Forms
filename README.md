@@ -13,10 +13,11 @@ A cross-platform library to agregate common tasks into a single library.
 - [ ] Collapsable Master/Detail SplitView
 
 ### Controls
-| Class                   | iOS | Android | UWP | MacOS |
-| :---------------------: | :-: | :-----: | :-: | :---: |
-| [Master/Detail SplitView](https://github.com/braveworldinc/BraveWorld.Forms/blob/main/Controls/MasterDetailView.cs) |  Y  |    Y    |  N  |  N/A  |
+|                         | iOS | Android | UWP |
+| :---------------------: | :-: | :-----: | :-: |
+| [Master/Detail SplitView](https://github.com/braveworldinc/BraveWorld.Forms/blob/main/Controls/MasterDetailView.cs) | Y | N/A | N/A |
 
+\* *N/A: Not Tested*
 
 
 ## Dependencies
