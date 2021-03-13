@@ -37,6 +37,22 @@ namespace BraveWorld.Forms.Controls
             set => SetValue(DetailProperty, value);
         }
 
+
+        public static readonly BindableProperty DefaultDetailsViewProperty = BindableProperty.Create(
+            propertyName: nameof(DefaultDetailsView),
+            returnType: typeof(ContentView),
+            declaringType: typeof(MasterDetailView)
+        );
+
+        public ContentView DefaultDetailsView
+        {
+            get => (ContentView)GetValue(DefaultDetailsViewProperty);
+            set => SetValue(DefaultDetailsViewProperty, value);
+        }
+
+
+
+
         public bool ShouldUseTabletLayout => Device.Idiom == TargetIdiom.Tablet;
 
 
@@ -154,6 +170,17 @@ namespace BraveWorld.Forms.Controls
             navigationPage.Title = page.Title;
         }
 
+        private ContentPage CreateDefaultPage()
+        {
+            ContentPage defaultPage = new ContentPage();
+            defaultPage.Content = DefaultDetailsView;
+
+            Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page.SetUseSafeArea(defaultPage, true);
+
+            return defaultPage;
+        }
+
+
         //public new async Task PopToRootAsync()
         //{
         //    while (Navigation.ModalStack.Count > 0)
@@ -185,11 +212,13 @@ namespace BraveWorld.Forms.Controls
             if (propertyName == MasterProperty.PropertyName)
                 ReplaceRoot(_mainNavigationPage, Master);
 
-            if (propertyName == DetailProperty.PropertyName)
-                ReplaceRoot(_detailNavigation, Detail);
 
-            //if (propertyName == SeparatorColorProperty.PropertyName && flyout != null)
-            //    flyout.BackgroundColor = SeparatorColor;
+            //if (propertyName == DetailProperty.PropertyName)
+            //    ReplaceRoot(_detailNavigation, Detail);
+
+
+            if (propertyName == DefaultDetailsViewProperty.PropertyName)
+                ReplaceRoot(_detailNavigation, CreateDefaultPage());
         }
     }
 }
