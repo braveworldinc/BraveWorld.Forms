@@ -8,11 +8,6 @@ namespace BraveWorld.Forms.Classes
 {
     public class SettingsBase
     {
-
-
-
-
-
         public static string GenerateEventName(string propertyName) => $"{propertyName}Changed";
 
         public static void Set(string key, string value)
@@ -23,7 +18,7 @@ namespace BraveWorld.Forms.Classes
             {
                 string eventName = GenerateEventName(key);
                 Preferences.Set(key, value);
-                MessagingCenter.Send(new object(), eventName, key);
+                MessagingCenter.Send(Application.Current, eventName, key);
             }
         }
 

@@ -139,7 +139,12 @@ namespace BraveWorld.Forms.Classes
 
         public static async Task ShowException(Exception e)
         {
-            await Application.Current.MainPage.DisplayAlert("Exception Thrown", e.Message, "Great...");
+            await Application.Current.MainPage.DisplayAlert("Exception Thrown", e.Message, "Lovely");
+        }
+
+        public static async Task ShowException(DataServiceRequestException e)
+        {
+            await Application.Current.MainPage.DisplayAlert($"Exception Thrown: {e.StatusCode}", e.Message, "Lovely");
         }
     }
 }
