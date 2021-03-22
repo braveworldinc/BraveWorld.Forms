@@ -16,4 +16,7 @@
       <IncludeInPackage>true</IncludeInPackage>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Effects\" />
+  </ItemGroup>
 </Project>
