@@ -2,10 +2,11 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Essentials;
 using BraveWorld.Forms;
 
-namespace BraveWorld.Forms.Controls
+namespace BraveWorld.Forms.Views
 {
     [ContentProperty("Master")]
     public class MasterDetailView : NavigationPage

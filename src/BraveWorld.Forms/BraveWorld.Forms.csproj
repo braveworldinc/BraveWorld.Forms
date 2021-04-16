@@ -16,10 +16,11 @@
     <Title>BraveWorld.Forms Plugin for Xamarin and Windows</Title>
     <Description>Plugin Description</Description>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <Version>0.0.1</Version>
-    <AssemblyVersion>0.0.1.0</AssemblyVersion>
-    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
-    <PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
+    <ReleaseVersion>0.0.1.6</ReleaseVersion>
+    <Version>$(ReleaseVersion)</Version>
+    <AssemblyVersion>$(ReleaseVersion)</AssemblyVersion>
+    <AssemblyFileVersion>$(ReleaseVersion)</AssemblyFileVersion>
+    <PackageVersion>$(ReleaseVersion)</PackageVersion>
     <Authors>Daniel Christmas</Authors>
     <Owners>Daniel Christmas</Owners>
     <Copyright>Copyright 2021</Copyright>
@@ -29,8 +30,9 @@
     <PackageProjectUrl>LINK TO PROJECT</PackageProjectUrl>
     <RepositoryUrl>LINK TO PROJECT</RepositoryUrl>
     <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
-
-    <LangVersion>8.0</LangVersion>
+    
+    <NeutralLanguage>en</NeutralLanguage>
+    <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
     <DebugType>portable</DebugType>
 
@@ -38,8 +40,6 @@
     <PackOnBuild>true</PackOnBuild>
     -->
 
-    <NeutralLanguage>en</NeutralLanguage>
-    <LangVersion>default</LangVersion>
     <DefineConstants>$(DefineConstants);</DefineConstants>
 
     <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
@@ -49,6 +49,7 @@
     <DisableExtraReferences>true</DisableExtraReferences>
 
     <NoWarn>SA1123</NoWarn>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
@@ -90,51 +91,22 @@
     -->
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
 
     <Folder Include="AssemblyInfo\" />
     <Folder Include="Classes\" />
     <Folder Include="Views\" />
+    <Folder Include="Exceptions\" />
     <Folder Include="Extensions\" />
     <Folder Include="PlatformConfiguration\" />
     <Folder Include="Helpers\" />
-    <Folder Include="PlatformConfiguration\iOSSpecific\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Views\SymbolImageSource\" />
+    <Folder Include="Core\" />
 
-    <Compile Include="Core\IBraveWorldLibrary.cs" />
-    <Compile Include="Library.cs" />
-    <Compile Include="Classes\AppThemeResources.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Classes\BaseDataService.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Classes\BaseViewModel.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Classes\DataServiceRequestException.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Classes\FontGlyphList.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Classes\SettingsBase.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Classes\SettingsKeyValue.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Classes\Singleton.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Classes\SystemColors.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Controls\MasterDetailView.cs">
-      <SubType></SubType>
-    </Compile>
-    <Compile Include="Extensions\FormsExtensions.cs">
+    <Compile Include="BraveLibrary.cs">
       <SubType></SubType>
     </Compile>
   </ItemGroup>
