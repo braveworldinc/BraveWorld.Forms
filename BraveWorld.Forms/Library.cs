@@ -1,57 +1,44 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
-namespace BraveWorld.Forms
+namespace Plugin.BraveWorld.Forms
 {
-    /// <summary>
-    ///     A static class to initialize BraveWorld.Forms Library
-    /// </summary>
     public static class Library
     {
-        public const string Name = "BraveWorld.Forms";
-
-
-        /// <summary>
-        ///     Initializes the BraveWorld.Forms Library, enables custom namespace http://braveworld.forms.com to be used in XAML.
-        ///     <remarks>This should be called once per application, typically in the `App.xaml.cs` constructor. </remarks>
-        /// </summary>
-        [ExcludeFromCodeCoverage]
-        public static void Initialize()
-        {
-        }
+        static Lazy<IBraveWorldLibrary> implementation = new Lazy<IBraveWorldLibrary>(() => CreateBraveWorldForms(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
         /// <summary>
-        ///     A static class used to enable features that are in preview.
+        /// Gets if the plugin is supported on the current platform.
         /// </summary>
-        public static class PreviewFeatures
+        public static bool IsSupported => implementation.Value == null ? false : true;
+
+        /// <summary>
+        /// Current plugin implementation to use
+        /// </summary>
+        public static IBraveWorldLibrary Current
         {
-            /// <summary>
-            ///     Toggles animations for the badge on the <see cref="MenuButton" />
-            /// </summary>
-            //public static bool MenuButtonAnimations { get; private set; }
-
-            /// <summary>
-            ///     Toggles usage of SkeletonView <see cref="SkeletonView" />
-            /// </summary>
-            //public static bool SkeletonView { get; private set; }
-
-            public static bool TestPreviewFeature { get; private set; }
-
-            /// <summary>
-            ///     Enable a feature that's in preview.
-            /// </summary>
-            /// <param name="previewFeature">A string specifying which preview feature you want to enable.</param>
-            public static void EnableFeature(string previewFeature)
+            get
             {
-                //if (previewFeature == nameof(MenuButtonAnimations))
-                //    MenuButtonAnimations = true;
-
-                //if (previewFeature == nameof(SkeletonView))
-                //    SkeletonView = true;
-
-                if (previewFeature == nameof(TestPreviewFeature))
-                    TestPreviewFeature = true;
+                IBraveWorldLibrary ret = implementation.Value;
+                if (ret == null)
+                {
+                    throw NotImplementedInReferenceAssembly();
+                }
+                return ret;
             }
         }
+
+        static IBraveWorldLibrary CreateBraveWorldForms()
+        {
+#if MONOANDROID10_0 || XAMARIN_IOS10 || WINDOWS_UWP
+#pragma warning disable IDE0022 // Use expression body for methods
+            return new BraveWorldFormsImplementation();
+#pragma warning restore IDE0022 // Use expression body for methods
+#else
+            return null;
+#endif
+        }
+
+        internal static Exception NotImplementedInReferenceAssembly() =>
+            new NotImplementedException("This functionality is not implemented in the portable version of this assembly.  You should reference the NuGet package from your main application project in order to reference the platform-specific implementation.");
     }
 }
