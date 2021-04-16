@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plugin.BraveWorld.Forms
+namespace BraveWorld.Forms.Classes
 {
-    public interface IBraveWorldLibrary
+    public class FontGlyphList
     {
+
     }
 }

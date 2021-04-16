@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Plugin.BraveWorld.Forms
+namespace BraveWorld.Forms
 {
     public static class Library
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plugin.BraveWorld.Forms
+namespace BraveWorld.Forms
 {
     /// <summary>
     /// Interface for BraveWorld.Forms

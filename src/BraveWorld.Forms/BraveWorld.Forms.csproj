@@ -1,7 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;netstandard2.0;netstandard2.1;Xamarin.iOS10;MonoAndroid10.0;Xamarin.TVOS10;Xamarin.WatchOS10;Xamarin.Mac20;tizen40</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;Xamarin.iOS10;MonoAndroid10.0;Xamarin.TVOS10;Xamarin.WatchOS10;Xamarin.Mac20</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.19041;netcoreapp3.1;net472;net471</TargetFrameworks>
     <!--Feel free to add as many targets as you need below
     netstandard1.0;netstandard2.0;MonoAndroid90;Xamarin.iOS10;uap10.0.16299;Xamarin.TVOS10;Xamarin.WatchOS10;Xamarin.Mac20;Tizen40
@@ -88,18 +88,57 @@
     <None Include="..\..\..\assets\XamarinCommunityToolkit_128x128.png" PackagePath="icon.png" Pack="true" />
     <PackageReference Include="mdoc" Version="5.8.0" PrivateAssets="all" />
     -->
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+
+    <Folder Include="AssemblyInfo\" />
+    <Folder Include="Classes\" />
+    <Folder Include="Views\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="PlatformConfiguration\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="PlatformConfiguration\iOSSpecific\" />
+
+    <Compile Include="Core\IBraveWorldLibrary.cs" />
+    <Compile Include="Library.cs" />
+    <Compile Include="Classes\AppThemeResources.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Classes\BaseDataService.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Classes\BaseViewModel.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Classes\DataServiceRequestException.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Classes\FontGlyphList.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Classes\SettingsBase.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Classes\SettingsKeyValue.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Classes\Singleton.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Classes\SystemColors.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Controls\MasterDetailView.cs">
+      <SubType></SubType>
+    </Compile>
+    <Compile Include="Extensions\FormsExtensions.cs">
+      <SubType></SubType>
+    </Compile>
   </ItemGroup>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard1.0')) ">
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
-    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-    <PackageReference Update="NETStandard.Library" PrivateAssets="all" />
-    <Compile Include="**\*.netstandard.cs" />
-    <Compile Include="**\*.netstandard.*.cs" />
-  </ItemGroup>
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard2.0')) ">
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
@@ -123,10 +162,6 @@
             <Name>Windows Mobile Extensions for the UWP</Name>
           </SDKReference>
         -->
-  </ItemGroup>
-
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-    <Compile Include="**\*.android.cs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
@@ -161,12 +196,6 @@
     <Compile Include="**\*.watchos.*.cs" />
   </ItemGroup>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('tizen')) ">
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-    <Compile Include="**\*.tizen.cs" />
-    <Compile Include="**\*.tizen.*.cs" />
-  </ItemGroup>
-
   <ItemGroup Condition=" $(TargetFramework.StartsWith('net472')) ">
     <Compile Include="**\*.wpf.cs" />
     <Compile Include="**\*.wpf.*.cs" />
@@ -192,14 +221,4 @@
   </ItemGroup>
   <Import Project="..\..\mdoc.targets" Condition=" '$(OS)' == 'Windows_NT' AND '$(GenerateApiDocs)' == 'true'" />
   -->
-
-  <ItemGroup>
-    <Compile Include="Core\IBraveWorldLibrary.cs" />
-    <Compile Include="Library.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-  </ItemGroup>
 </Project>
