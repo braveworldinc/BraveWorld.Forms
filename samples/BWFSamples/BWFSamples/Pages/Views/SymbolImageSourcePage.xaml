@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<local:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BWFSamples.Pages"
+    xmlns:vm="clr-namespace:BWFSamples.ViewModels.Views"
+    xmlns:model="clr-namespace:BWFSamples.Models"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:bwf="http://braveworldinc.com/forms"
+    x:DataType="vm:SymbolImageSourceViewModel"
+    x:Class="BWFSamples.Pages.Views.SymbolImageSourcePage">
+    <local:BasePage.BindingContext>
+        <vm:SymbolImageSourceViewModel/>
+    </local:BasePage.BindingContext>
+    <local:BasePage.Content>
+
+        <CollectionView ItemsSource="{Binding Symbols}" ItemsLayout="VerticalGrid, 3">
+            <CollectionView.HeaderTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="Glyphs"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.HeaderTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:SymbolImageDefinition">
+                    <Grid>
+                        <Frame BackgroundColor="Gray" CornerRadius="5" Padding="5" Margin="10" HasShadow="False">
+                            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="10">
+                                <Image WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" xct:IconTintColorEffect.TintColor="{DynamicResource Primary}">
+                                    <Image.Source>
+                                        <bwf:SymbolImageSource Glyph="{Binding Glyph}"/>
+                                    </Image.Source>
+                                </Image>
+                                    <Label Text="{Binding Glyph}"
+                                           FontFamily="Menlo"
+                                           FontSize="12"
+                                           TextType="Text"
+                                           LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </local:BasePage.Content>
+</local:BasePage>

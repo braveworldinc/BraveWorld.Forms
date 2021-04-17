@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<local:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:BWFSamples.ViewModels"
+    xmlns:model="clr-namespace:BWFSamples.Models"
+    xmlns:local="clr-namespace:BWFSamples.Pages"
+    x:DataType="vm:ViewsMasterViewModel"
+    x:Class="BWFSamples.Pages.Views.ViewsMasterPage">
+    <local:BasePage.BindingContext>
+        <vm:ViewsMasterViewModel/>
+    </local:BasePage.BindingContext>
+    <local:BasePage.Content>
+        <ListView ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:ViewDefinitionModel">
+                    <TextCell
+                        Text="{Binding Title}"
+                        Detail="{Binding Description}"
+                        Command="{Binding NavigateCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                        CommandParameter="{Binding .}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </local:BasePage.Content>
+</local:BasePage>

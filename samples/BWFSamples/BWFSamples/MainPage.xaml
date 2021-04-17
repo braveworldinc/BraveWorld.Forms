@@ -1,51 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:bwf="http://braveworldinc.com/forms"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="BWFSamples.MainPage">
-
-    <StackLayout xct:SafeAreaEffect.SafeArea="true">
-        <Frame BackgroundColor="{DynamicResource Primary}" Padding="24" CornerRadius="0" HasShadow="False">
-            <Label Text="BraveWorld.Forms Samples" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
-        </Frame>
-        <Label Text="Debug Mode" FontSize="Title" Padding="30,10,30,10"/>
-        <Label FontSize="16" Padding="30,5,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="BraveWorld.Forms: "/>
-                        <Span x:Name="libraryVersion" Text="X.X.X.X" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label FontSize="16" Padding="30,5,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="BWFSamples: "/>
-                        <Span x:Name="appVersion" Text="X.X.X.X" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-
-        <Image WidthRequest="64" HeightRequest="64" Margin="10" xct:IconTintColorEffect.TintColor="{DynamicResource Primary}">
-            <Image.Source>
-                <bwf:SymbolImageSource Glyph="face.smiling"/>
-            </Image.Source>
-        </Image>
-    </StackLayout>
-
-</ContentPage>
+<bwf:MasterDetailView xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:bwf="http://braveworldinc.com/forms"
+            xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+            xmlns:pages="clr-namespace:BWFSamples.Pages.Views"
+            x:Class="BWFSamples.MainPage">
+    <bwf:MasterDetailView.Master>
+        <pages:ViewsMasterPage/>
+    </bwf:MasterDetailView.Master>
+    <bwf:MasterDetailView.DefaultDetailsView>
+        <ContentView NavigationPage.HasNavigationBar="False">
+            <Label Text="No Project Selected" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Opacity="0.3"/>
+        </ContentView>
+    </bwf:MasterDetailView.DefaultDetailsView>
+</bwf:MasterDetailView>

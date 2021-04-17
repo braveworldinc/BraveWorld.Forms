@@ -8,14 +8,14 @@ using Xamarin.Forms;
 
 namespace BWFSamples
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : BraveWorld.Forms.Views.MasterDetailView
     {
         public MainPage()
         {
             InitializeComponent();
 
-            libraryVersion.Text = BraveWorld.Forms.BraveLibrary.Version.ToString();
-            appVersion.Text = Xamarin.Essentials.VersionTracking.CurrentVersion;
+            //libraryVersion.Text = BraveWorld.Forms.BraveLibrary.Version.ToString();
+            //appVersion.Text = Xamarin.Essentials.VersionTracking.CurrentVersion;
         }
     }
 }
