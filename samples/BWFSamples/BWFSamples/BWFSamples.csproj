@@ -14,8 +14,6 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\src\BraveWorld.Forms\BraveWorld.Forms.csproj" />
+    <PackageReference Include="BraveWorld.Forms" Version="0.0.1.17" />
   </ItemGroup>
 </Project>

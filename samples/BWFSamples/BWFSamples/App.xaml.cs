@@ -1,5 +1,6 @@
 ﻿using System;
 using BraveWorld.Forms;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,20 +13,9 @@ namespace BWFSamples
             InitializeComponent();
             BraveLibrary.Init();
 
+            VersionTracking.Track();
+
             MainPage = new MainPage();
-
-        }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
         }
     }
 }

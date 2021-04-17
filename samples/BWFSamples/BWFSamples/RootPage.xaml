@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<bwf:MasterDetailView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bwf="http://braveworldinc.com/forms"
+    x:Class="BWFSamples.RootPage">
+    <bwf:MasterDetailView.Master>
+        
+    </bwf:MasterDetailView.Master>
+</bwf:MasterDetailView>

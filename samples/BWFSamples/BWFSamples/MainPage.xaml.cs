@@ -13,6 +13,9 @@ namespace BWFSamples
         public MainPage()
         {
             InitializeComponent();
+
+            libraryVersion.Text = BraveWorld.Forms.BraveLibrary.Version.ToString();
+            appVersion.Text = Xamarin.Essentials.VersionTracking.CurrentVersion;
         }
     }
 }

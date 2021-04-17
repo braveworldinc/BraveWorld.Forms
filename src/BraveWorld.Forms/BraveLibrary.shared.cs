@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace BraveWorld.Forms
 {
@@ -8,6 +9,8 @@ namespace BraveWorld.Forms
     /// </summary>
     public static class BraveLibrary
     {
+        public static Version Version => Assembly.GetExecutingAssembly().GetName().Version;
+
         /// <summary>
         ///     Initializes the BraveWorld.Forms Library, enables custom namespace http://braveworldinc.com/forms to be used in XAML.
         ///     <remarks>This should be called once per application, typically in the `App.xaml.cs` constructor. </remarks>
