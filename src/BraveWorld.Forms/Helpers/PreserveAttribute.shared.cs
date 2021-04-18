@@ -3,10 +3,20 @@ using System.ComponentModel;
 
 namespace BraveWorld.Forms.Helpers
 {
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	[AttributeUsage(AttributeTargets.Assembly)]
-	public sealed class PreserveAttribute : Attribute
+    [AttributeUsage(AttributeTargets.All)]
+    public class PreserveAttribute : Attribute
     {
+        public bool AllMembers;
+        public bool Conditional;
 
+        public PreserveAttribute()
+        {
+        }
+
+        public PreserveAttribute(bool allMembers, bool conditional)
+        {
+            AllMembers = allMembers;
+            Conditional = conditional;
+        }
     }
 }

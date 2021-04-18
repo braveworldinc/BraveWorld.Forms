@@ -1,3 +1,3 @@
 ﻿using BraveWorld.Forms.Helpers;
 
-[assembly: Preserve]
+[assembly: Preserve(AllMembers = true)]

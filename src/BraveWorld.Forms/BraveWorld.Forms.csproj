@@ -30,7 +30,7 @@
     <PackageProjectUrl>LINK TO PROJECT</PackageProjectUrl>
     <RepositoryUrl>LINK TO PROJECT</RepositoryUrl>
     <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
-    
+
     <NeutralLanguage>en</NeutralLanguage>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
@@ -82,13 +82,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="**/*.shared.cs" />
-    <Compile Include="**/*.shared.*.cs" />
+    <Compile Include="**\*.shared.cs" />
+    <Compile Include="**\*.shared.*.cs" />
     <!--
     <None Include="..\..\..\LICENSE" PackagePath="" Pack="true" />
     <None Include="..\..\..\assets\XamarinCommunityToolkit_128x128.png" PackagePath="icon.png" Pack="true" />
     <PackageReference Include="mdoc" Version="5.8.0" PrivateAssets="all" />
     -->
+
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
@@ -105,6 +106,8 @@
     <Folder Include="build\" />
   </ItemGroup>
 
+
+
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard2.0')) ">
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
@@ -119,7 +122,7 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12" />
     <Compile Include="**\*.uwp.cs" />
     <Compile Include="**\*.uwp.*.cs" />
     <!--
@@ -185,6 +188,7 @@
   -->
   <ItemGroup>
     <Compile Remove="build\*.cs" />
+    <Compile Remove="obj\**" />
     <None Include="build\**\*.cs;build\**\*.targets" Pack="true" PackagePath="build" />
   </ItemGroup>
 </Project>
