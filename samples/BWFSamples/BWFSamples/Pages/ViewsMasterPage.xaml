@@ -5,22 +5,33 @@
     xmlns:vm="clr-namespace:BWFSamples.ViewModels"
     xmlns:model="clr-namespace:BWFSamples.Models"
     xmlns:local="clr-namespace:BWFSamples.Pages"
+	xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
     x:DataType="vm:ViewsMasterViewModel"
-    x:Class="BWFSamples.Pages.Views.ViewsMasterPage">
-    <local:BasePage.BindingContext>
-        <vm:ViewsMasterViewModel/>
-    </local:BasePage.BindingContext>
-    <local:BasePage.Content>
-        <ListView ItemsSource="{Binding Items}">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:ViewDefinitionModel">
-                    <TextCell
-                        Text="{Binding Title}"
-                        Detail="{Binding Description}"
-                        Command="{Binding NavigateCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
-                        CommandParameter="{Binding .}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </local:BasePage.Content>
+    x:Class="BWFSamples.Pages.Views.ViewsMasterPage"
+	Title="Views">
+	<local:BasePage.BindingContext>
+		<vm:ViewsMasterViewModel/>
+	</local:BasePage.BindingContext>
+	<local:BasePage.Content>
+		<ListView ItemsSource="{Binding Items}" RowHeight="80">
+			<ListView.ItemTemplate>
+				<DataTemplate x:DataType="model:ViewDefinitionModel">
+					<ViewCell>
+						<StackLayout Padding="15,10"
+							xct:TouchEffect.AnimationDuration="250"
+							xct:TouchEffect.AnimationEasing="{x:Static Easing.CubicInOut}"
+							xct:TouchEffect.PressedScale="0.9"
+							xct:TouchEffect.PressedOpacity="0.6"
+							xct:TouchEffect.Command="{Binding NavigateCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}" 
+							xct:TouchEffect.CommandParameter="{Binding .}">
+
+							<Label Text="{Binding Title}" FontSize="22"/>
+							<Label Text="{Binding Description}" FontSize="16"/>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</local:BasePage.Content>
 </local:BasePage>

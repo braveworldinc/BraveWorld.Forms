@@ -28,7 +28,6 @@ namespace BWFSamples.ViewModels.Views
     {
         public string Glyph { get; private set; }
 
-
         public SymbolImageDefinition(string glyph)
         {
             Glyph = glyph;

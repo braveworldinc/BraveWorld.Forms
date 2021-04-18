@@ -1,57 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
-            x:Class="BWFSamples.App">
-    <Application.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
+			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+			xmlns:bwf="http://braveworldinc.com/forms"
+			xmlns:resources="clr-namespace:BWFSamples.Resouces"
+			x:Class="BWFSamples.App">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<resources:GlobalStyles/>
+			</ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="Page" ApplyToDerivedTypes="True">
-                <Setter Property="ios:Page.LargeTitleDisplay" Value="Never"/>
-                <Setter Property="ios:Page.UseSafeArea" Value="True"/>
-            </Style>
+			<Color x:Key="Primary">#2196F3</Color>
 
-            <Style TargetType="TabbedPage" ApplyToDerivedTypes="True">
-                <Setter Property="ios:TabbedPage.TranslucencyMode" Value="Translucent"/>
-                <Setter Property="BackgroundColor" Value="Red"/>
-            </Style>
-
-            <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
-                <Setter Property="ios:NavigationPage.IsNavigationBarTranslucent" Value="True"/>
-                <Setter Property="ios:NavigationPage.PrefersLargeTitles" Value="True"/>
-                <Setter Property="NavigationPage.BarBackgroundColor" Value="#00000000"/>
-                <Setter Property="ios:NavigationPage.HideNavigationBarSeparator" Value="False"/>
-            </Style>
-
-
-
-            <Style TargetType="ListView" ApplyToDerivedTypes="True">
-                <Setter Property="SelectionMode" Value="None"/>
-                <Setter Property="ios:ListView.RowAnimationsEnabled" Value="True"/>
-            </Style>
-
-
-            <Style TargetType="Entry">
-                <Setter Property="ios:Entry.CursorColor" Value="{DynamicResource Primary}"/>
-            </Style>
-
-            <Style TargetType="Button">
-                <Setter Property="TextColor" Value="{DynamicResource Primary}"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-            </Style>
-
-            <Style x:Key="ButtonFilled" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{DynamicResource Primary}"/>
-                <Setter Property="TextColor" Value="white"/>
-                <Setter Property="CornerRadius" Value="10"/>
-            </Style>
-            
-            <!--<Style TargetType="ActivityIndicator">
-                <Setter Property="Color" Value="{DynamicResource Primary}"/>
-            </Style>-->
-        </ResourceDictionary>
-    </Application.Resources>
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>
