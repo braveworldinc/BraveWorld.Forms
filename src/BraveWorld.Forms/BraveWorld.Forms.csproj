@@ -27,7 +27,7 @@
     <Company>BraveWorld, Inc</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://raw.githubusercontent.com/braveworldinc/BraveWorld.Forms/main/assets/icon.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/braveworldinc/BraveWorld.Forms</PackageProjectUrl>
     <RepositoryUrl>https://github.com/braveworldinc/BraveWorld.Forms/</RepositoryUrl>
     <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
@@ -107,15 +107,15 @@
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
     <Folder Include="Views\" />
-    
     <Folder Include="Views\SymbolImageSource\" />
 
     <Compile Include="**\*.shared.cs" />
     <Compile Include="**\*.shared.*.cs" />
+    
+    <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
+    <None Include="..\..\assets\icon.png" PackagePath="icon.png" Pack="true" />
 
     <!--
-    <None Include="..\..\..\LICENSE" PackagePath="" Pack="true" />
-    <None Include="..\..\..\assets\XamarinCommunityToolkit_128x128.png" PackagePath="icon.png" Pack="true" />
     <PackageReference Include="mdoc" Version="5.8.0" PrivateAssets="all" />
     -->
   </ItemGroup>
@@ -205,16 +205,5 @@
     <Compile Remove="build\*.cs" />
     <Compile Remove="obj\**" />
     <None Include="build\**\*.cs;build\**\*.targets" Pack="true" PackagePath="build" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Views\SymbolImageSource\SymbolImageSourceHandler.shared.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\SymbolImageSource\SymbolImageSourceHandler.ios.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Exceptions\FeatureNotSupportedException.shared.cs">
-      <SubType></SubType>
-    </Compile>
   </ItemGroup>
 </Project>
