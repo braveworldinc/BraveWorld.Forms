@@ -1,0 +1,7 @@
+﻿<Project>
+  <ItemGroup>
+    <Compile Condition="'$(MSBuildProjectExtension)' == '.csproj'" 
+             Include="$(MSBuildThisFileDirectory)PreserveBraveWorldForms.cs"
+             Visible="false" />
+  </ItemGroup>
+</Project>

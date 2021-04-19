@@ -2,10 +2,11 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Essentials;
 using BraveWorld.Forms;
 
-namespace BraveWorld.Forms.Controls
+namespace BraveWorld.Forms.Views
 {
     [ContentProperty("Master")]
     public class MasterDetailView : NavigationPage
@@ -193,11 +194,15 @@ namespace BraveWorld.Forms.Controls
         //    //}
         //}
 
-        public void OpenDetail<T>(T page) where T : Page
+        public void OpenDetail<T>(T page, bool animated = false) where T : Page
         {
             if (ShouldUseTabletLayout)
             {
-                ReplaceRoot(_detailNavigation, page);
+                if (animated == false)
+                    ReplaceRoot(_detailNavigation, page);
+                else
+                    this.PushAsync(page, true);
+
                 flyout.IsPresented = false;
             }
             else

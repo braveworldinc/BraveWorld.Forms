@@ -83,8 +83,14 @@ namespace BraveWorld.Forms.Classes
         public bool IsBusy
         {
             get => _isBusy;
-            set => SetProperty(ref _isBusy, value);
+            set
+            {
+                SetProperty(ref _isBusy, value);
+                OnPropertyChanged(nameof(IsNotBusy));
+            }
         }
+        public bool IsNotBusy => !IsBusy;
+
 
         private string _title = string.Empty;
         public string Title
