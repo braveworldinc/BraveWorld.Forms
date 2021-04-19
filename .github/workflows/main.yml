@@ -1,6 +1,7 @@
 name: Xamarin Build
 
 on: 
+  workflow_dispatch:
   push:
     tags:
     - '*'
