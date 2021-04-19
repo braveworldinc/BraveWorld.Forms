@@ -1,0 +1,24 @@
+name: Test Build
+  
+on: 
+  workflow_dispatch:
+  push:
+    tags:
+    - '*'
+
+jobs:
+
+  Create Nnget:
+
+    runs-on: macos-latest
+    
+    steps:
+
+    - uses: actions/checkout@v1
+      
+    - name: Android
+      run: |
+        nuget restore
+        cd src/BraveWorld.Forms/
+        msbuild -t:pack
+        # msbuild BraveWorld.Forms.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
