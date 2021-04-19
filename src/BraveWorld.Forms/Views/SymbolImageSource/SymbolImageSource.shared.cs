@@ -8,14 +8,13 @@ using BraveWorld.Forms.Views;
 
 using FormsElement = Xamarin.Forms.Image;
 
-
 namespace BraveWorld.Forms.Views
 {
-	public class SymbolImageSource : ImageSource
+	public class SymbolImageSource : ImageSource, IElementConfiguration<SymbolImageSource>
 	{
 		#region Properties
 		public static readonly BindableProperty GlyphProperty =
-			BindableProperty.Create(nameof(Glyph), typeof(string), typeof(SymbolImageSource));
+			BindableProperty.Create(nameof(Glyph), typeof(string), typeof(SymbolImageSource), default(string));
 
 		public string Glyph
 		{
@@ -26,6 +25,9 @@ namespace BraveWorld.Forms.Views
 		public static readonly BindableProperty WeightProperty =
 			BindableProperty.Create(nameof(Weight), typeof(SymbolWeight), typeof(SymbolImageSource), SymbolWeight.Regular);
 
+		//public static readonly BindableProperty WeightProperty =
+		//	BindableProperty.Create(nameof(Weight), typeof(SymbolWeight), typeof(SymbolImageSource), SymbolWeight.Regular, propertyChanged: (b, o, n) => ((SymbolImageSource)b).OnSourceChanged());
+
 		public SymbolWeight Weight
 		{
 			get => (SymbolWeight)GetValue(WeightProperty);
@@ -33,10 +35,13 @@ namespace BraveWorld.Forms.Views
 		}
 		#endregion
 
-		public SymbolImageSource()
-		{
+		#region Platform-Specific API
+		readonly Lazy<PlatformConfigurationRegistry<SymbolImageSource>> platformConfigurationRegistry;
 
-		}
+		public IPlatformElementConfiguration<T, SymbolImageSource> On<T>() where T : IConfigPlatform =>
+			platformConfigurationRegistry.Value.On<T>();
+		#endregion
+
 
 		protected override void OnPropertyChanged([CallerMemberName] string? propertyName = null)
 		{
@@ -45,14 +50,9 @@ namespace BraveWorld.Forms.Views
 
 			base.OnPropertyChanged(propertyName);
 		}
-
-		public void SetWeight(SymbolWeight symbolWeight)
-		{
-			Weight = symbolWeight;
-		}
 	}
 
-	public enum SymbolWeight
+    public enum SymbolWeight
 	{
 		UltraLight,
 		Thin,

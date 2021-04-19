@@ -9,6 +9,8 @@ namespace BraveWorld.Forms
     /// </summary>
     public static class BraveLibrary
     {
+        static Assembly AssemblyCache;
+
         public static Version Version => Assembly.GetExecutingAssembly().GetName().Version;
 
         /// <summary>
@@ -17,7 +19,35 @@ namespace BraveWorld.Forms
         /// </summary>
         [ExcludeFromCodeCoverage]
         public static void Init()
-        { }
+        {
+#if XAMARIN_IOS
+            Xamarin.Forms.Internals.Registrar.Registered.Register(typeof(Views.SymbolImageSource), typeof(Views.SymbolImageSourceHandler));
+#endif
+        }
+
+        /// <summary>
+        /// Registers the assembly.
+        /// </summary>
+        /// <param name="typeHavingResource">Type having resource.</param>
+        public static void RegisterAssembly(Type typeHavingResource = null)
+        {
+            if (typeHavingResource == null)
+            {
+#if NETSTANDARD2_0
+                AssemblyCache = Assembly.GetCallingAssembly();
+#else
+                MethodInfo callingAssemblyMethod = typeof(Assembly).GetTypeInfo().GetDeclaredMethod("GetCallingAssembly");
+                if (callingAssemblyMethod != null)
+                {
+                    AssemblyCache = (Assembly)callingAssemblyMethod.Invoke(null, new object[0]);
+                }
+#endif
+            }
+            else
+            {
+                AssemblyCache = typeHavingResource.GetTypeInfo().Assembly;
+            }
+        }
 
 
         internal static Exception NotImplementedInReferenceAssembly() =>
@@ -32,6 +62,8 @@ namespace BraveWorld.Forms
             public static bool SymbolImageSource { get; private set; }
 
 
+
+
             public static void EnableFeature(string previewFeature)
             {
                 switch (previewFeature)
@@ -40,6 +72,12 @@ namespace BraveWorld.Forms
                         SymbolImageSource = true;
                         break;
                 }
+            }
+
+            public static void EnableFeatures(string[] previewFeatures)
+            {
+                for (int i = 0; i < previewFeatures.Length; i++)
+                    EnableFeature(previewFeatures[i]);
             }
         }
     }

@@ -16,7 +16,7 @@
     <Title>BraveWorld.Forms</Title>
     <Description>An SDK-styled Xamarin.Forms library used at BraveWorld, Inc</Description>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <ReleaseVersion>0.0.1.18</ReleaseVersion>
+    <ReleaseVersion>0.0.1.19</ReleaseVersion>
     <Version>$(ReleaseVersion)</Version>
     <AssemblyVersion>$(ReleaseVersion)</AssemblyVersion>
     <AssemblyFileVersion>$(ReleaseVersion)</AssemblyFileVersion>
@@ -36,6 +36,7 @@
     <LangVersion>latestMajor</LangVersion>
     <Nullable>enable</Nullable>
     <DebugType>portable</DebugType>
+    <EnableDefaultItems>false</EnableDefaultItems>
 
     <!--
     <PackOnBuild>true</PackOnBuild>
@@ -88,28 +89,35 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="**\*.shared.cs" />
-    <Compile Include="**\*.shared.*.cs" />
-    <!--
-    <None Include="..\..\..\LICENSE" PackagePath="" Pack="true" />
-    <None Include="..\..\..\assets\XamarinCommunityToolkit_128x128.png" PackagePath="icon.png" Pack="true" />
-    <PackageReference Include="mdoc" Version="5.8.0" PrivateAssets="all" />
-    -->
-
+    <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
 
+    <Folder Include="build\" />
     <Folder Include="AssemblyInfo\" />
     <Folder Include="Classes\" />
-    <Folder Include="Views\" />
+    <Folder Include="Converters\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Views\" />
+    
     <Folder Include="Views\SymbolImageSource\" />
-    <Folder Include="build\" />
+
+    <Compile Include="**\*.shared.cs" />
+    <Compile Include="**\*.shared.*.cs" />
+
+    <!--
+    <None Include="..\..\..\LICENSE" PackagePath="" Pack="true" />
+    <None Include="..\..\..\assets\XamarinCommunityToolkit_128x128.png" PackagePath="icon.png" Pack="true" />
+    <PackageReference Include="mdoc" Version="5.8.0" PrivateAssets="all" />
+    -->
   </ItemGroup>
 
 
@@ -149,6 +157,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <Reference Include="Xamarin.iOS" />
     <Compile Include="**\*.ios.cs" />
     <Compile Include="**\*.ios.*.cs" />
   </ItemGroup>
@@ -196,5 +205,16 @@
     <Compile Remove="build\*.cs" />
     <Compile Remove="obj\**" />
     <None Include="build\**\*.cs;build\**\*.targets" Pack="true" PackagePath="build" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\SymbolImageSource\SymbolImageSourceHandler.shared.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SymbolImageSource\SymbolImageSourceHandler.ios.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Exceptions\FeatureNotSupportedException.shared.cs">
+      <SubType></SubType>
+    </Compile>
   </ItemGroup>
 </Project>

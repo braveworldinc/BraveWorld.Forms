@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace BraveWorld.Forms.Extensions
 {
-    public static class FormsExtensions
+    public static partial class FormsExtensions
     {
         public static async Task ShowExceptionAlert(this Page sender, Exception e)
         {

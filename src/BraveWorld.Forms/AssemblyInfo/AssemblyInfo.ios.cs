@@ -4,6 +4,6 @@ using BraveWorld.Forms.Views;
 
 [assembly: LinkerSafe]
 
-#if XAMARIN_IOS
-[assembly: ExportImageSourceHandler(typeof(SymbolImageSource), typeof(SymbolImageSourceHandler))]
-#endif
+//#if XAMARIN_IOS
+//[assembly: ExportImageSourceHandler(typeof(SymbolImageSource), typeof(SymbolImageSourceHandler))]
+//#endif
