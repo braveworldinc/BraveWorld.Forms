@@ -11,23 +11,24 @@
     <RootNamespace>BraveWorld.Forms</RootNamespace>
     <PackageId>BraveWorld.Forms</PackageId>
 
-    <Summary>Summary of nuget</Summary>
+    <Summary>An SDK-styled Xamarin.Forms library used at BraveWorld, Inc</Summary>
     <PackageTags>xamarin, windows, ios, android, xamarin.forms, plugin, BraveWorld.Forms</PackageTags>
-    <Title>BraveWorld.Forms Plugin for Xamarin and Windows</Title>
-    <Description>Plugin Description</Description>
+    <Title>BraveWorld.Forms</Title>
+    <Description>An SDK-styled Xamarin.Forms library used at BraveWorld, Inc</Description>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <ReleaseVersion>0.0.1.17</ReleaseVersion>
+    <ReleaseVersion>0.0.1.18</ReleaseVersion>
     <Version>$(ReleaseVersion)</Version>
     <AssemblyVersion>$(ReleaseVersion)</AssemblyVersion>
     <AssemblyFileVersion>$(ReleaseVersion)</AssemblyFileVersion>
     <PackageVersion>$(ReleaseVersion)</PackageVersion>
-    <Authors>Daniel Christmas</Authors>
-    <Owners>Daniel Christmas</Owners>
+    <Authors>BraveWorld, Inc</Authors>
+    <Owners>BraveWorld, Inc</Owners>
     <Copyright>Copyright 2021</Copyright>
     <Company>BraveWorld, Inc</Company>
-    <PackageIconUrl>ICON URL</PackageIconUrl>
-    <PackageLicenseUrl>LINK TO LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>LINK TO PROJECT</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageIconUrl>https://raw.githubusercontent.com/braveworldinc/BraveWorld.Forms/main/assets/icon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/braveworldinc/BraveWorld.Forms</PackageProjectUrl>
     <RepositoryUrl>https://github.com/braveworldinc/BraveWorld.Forms/</RepositoryUrl>
     <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
 
@@ -50,6 +51,8 @@
 
     <NoWarn>SA1123</NoWarn>
     <SynchReleaseVersion>false</SynchReleaseVersion>
+
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
