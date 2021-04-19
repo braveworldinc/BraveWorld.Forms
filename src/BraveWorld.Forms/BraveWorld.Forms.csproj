@@ -32,7 +32,7 @@
     <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
 
     <NeutralLanguage>en</NeutralLanguage>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>latestMajor</LangVersion>
     <Nullable>enable</Nullable>
     <DebugType>portable</DebugType>
 
@@ -79,6 +79,9 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'uap10.0.19041' ">
     <DefineConstants>$(DefineConstants);UWP_19041;UWP_18362;UWP_16299;UWP_14393</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
