@@ -1,4 +1,4 @@
-name: CI on Push and Pull Request
+name: Xamarin Build
 
 on: 
   push:
@@ -25,30 +25,3 @@ jobs:
       run: |
         cd ..
         ls
-  Android:
-
-    runs-on: macos-latest
-    
-    steps:
-
-    - uses: actions/checkout@v1
-      
-    - name: Android
-      run: |
-        cd Blank
-        nuget restore
-        cd Blank.Android
-        msbuild Blank.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
-  iOS:
-
-    runs-on: macos-latest
-    
-    steps:
-
-    - uses: actions/checkout@v1
-      
-    - name: iOS
-      run: |
-        cd Blank
-        nuget restore
-        msbuild Blank.iOS/Blank.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
