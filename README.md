@@ -5,7 +5,7 @@
 <h1>BraveWorld.Forms</h1>
 <h4>(In Development)</h4>
 
-A cross-platform library to agregate common tasks into a single library.
+A cross-platform library to aggregate common tasks into a single library.
 
 ## To-Do
 
