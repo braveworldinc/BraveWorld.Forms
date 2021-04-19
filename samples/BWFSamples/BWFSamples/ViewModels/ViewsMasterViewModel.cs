@@ -13,10 +13,12 @@ namespace BWFSamples.ViewModels
     {
         private readonly static IEnumerable<ViewDefinitionModel> viewsList = new[]
         {
-            new ViewDefinitionModel(typeof(SymbolImageSourcePage), "Symbol Image Source", "Description Goes Here", new[] { Device.iOS, Device.Android })
+            new ViewDefinitionModel(typeof(SymbolImageSourcePage), "Symbol Image Source", "Description Goes Here",
+                conditions:m => BraveWorld.Forms.BraveLibrary.PreviewFeatures.SymbolImageSource,
+                platforms:new[] { Device.iOS, Device.Android })
         };
 
         protected override IEnumerable<ViewDefinitionModel> CreateItems()
-            => viewsList.Where(p => p.Platforms.Contains(Device.RuntimePlatform));
+            => viewsList.Where(p => p.IsVisibleWithConditions(p) && p.Platforms.Contains(Device.RuntimePlatform));
     }
 }

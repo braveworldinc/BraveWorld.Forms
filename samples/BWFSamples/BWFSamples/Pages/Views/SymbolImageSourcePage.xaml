@@ -12,8 +12,12 @@
     <local:BasePage.BindingContext>
         <vm:SymbolImageSourceViewModel/>
     </local:BasePage.BindingContext>
-    <local:BasePage.Content>
 
+    <local:BasePage.Resources>
+        <x:Double x:Key="GlyphSize">72</x:Double>
+    </local:BasePage.Resources>
+
+    <local:BasePage.Content>
         <CollectionView ItemsSource="{Binding Symbols}" ItemsLayout="VerticalGrid, 3">
             <CollectionView.HeaderTemplate>
                 <DataTemplate>
@@ -25,14 +29,24 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="vm:SymbolImageDefinition">
                     <Grid>
-                        <Frame BackgroundColor="Gray" CornerRadius="5" Padding="5" Margin="10" HasShadow="False">
+                        <Frame BackgroundColor="{AppThemeBinding Dark=#11ffffff, Default=#11000000}" CornerRadius="5" Padding="5" Margin="10" HasShadow="False">
                             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="10">
-                                <Image WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" xct:IconTintColorEffect.TintColor="{DynamicResource Primary}">
+                                <Image WidthRequest="{StaticResource GlyphSize}" HeightRequest="{StaticResource GlyphSize}" VerticalOptions="Center" HorizontalOptions="Center">
                                     <Image.Source>
-                                        <bwf:SymbolImageSource Glyph="{Binding Glyph}"/>
+                                        <OnPlatform x:TypeArguments="ImageSource">
+                                            <OnPlatform.Platforms>
+                                                <On Platform="iOS">
+                                                    <bwf:SymbolImageSource Glyph="{Binding Glyph}" Weight="Regular"/>
+                                                </On>
+                                                <On Platform="Android,UWP">
+                                                    <xct:GravatarImageSource Email="braveworldincbusiness@gmail.com"/>
+                                                </On>
+                                            </OnPlatform.Platforms>
+                                        </OnPlatform>
                                     </Image.Source>
                                 </Image>
                                     <Label Text="{Binding Glyph}"
+                                           Padding="10,0"
                                            FontFamily="Menlo"
                                            FontSize="12"
                                            TextType="Text"
@@ -43,6 +57,5 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
     </local:BasePage.Content>
 </local:BasePage>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace BWFSamples.Models
@@ -12,21 +13,16 @@ namespace BWFSamples.Models
         public string Description { get; }
         public Color Color { get; }
         public IEnumerable<string> Platforms { get; }
+        public Func<ViewDefinitionModel, bool> IsVisibleWithConditions { get; }
 
 
-
-        public ViewDefinitionModel(Type type, string title, string description, IEnumerable<string> platforms = null)
-            : this(type, title, Color.Default, description, platforms)
-        {
-        }
-
-        public ViewDefinitionModel(Type type, string title, Color color, string description, IEnumerable<string> platforms = null)
+        public ViewDefinitionModel(Type type, string title, string description, Func<ViewDefinitionModel, bool> conditions = null, IEnumerable<string> platforms = null)
         {
             Type = type;
             Title = title;
             Description = description;
-            Color = color;
             Platforms = platforms;
+            IsVisibleWithConditions = conditions;
         }
 
     }

@@ -11,7 +11,9 @@ namespace BWFSamples
         public App()
         {
             InitializeComponent();
-            BraveLibrary.Init();
+
+            BraveLibrary.RegisterAssembly();
+            BraveLibrary.PreviewFeatures.EnableFeatures(new[] { "SymbolImageSource" });
 
             VersionTracking.Track();
 

@@ -6,29 +6,42 @@
     xmlns:model="clr-namespace:BWFSamples.Models"
     xmlns:local="clr-namespace:BWFSamples.Pages"
 	xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 	xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
     x:DataType="vm:ViewsMasterViewModel"
     x:Class="BWFSamples.Pages.Views.ViewsMasterPage"
+	StyleClass="Master"
 	Title="Views">
 	<local:BasePage.BindingContext>
 		<vm:ViewsMasterViewModel/>
 	</local:BasePage.BindingContext>
 	<local:BasePage.Content>
-		<ListView ItemsSource="{Binding Items}" RowHeight="80">
+		<ListView ItemsSource="{Binding Items}" RowHeight="72">
 			<ListView.ItemTemplate>
 				<DataTemplate x:DataType="model:ViewDefinitionModel">
 					<ViewCell>
-						<StackLayout Padding="15,10"
+						<Grid 
 							xct:TouchEffect.AnimationDuration="250"
 							xct:TouchEffect.AnimationEasing="{x:Static Easing.CubicInOut}"
-							xct:TouchEffect.PressedScale="0.9"
-							xct:TouchEffect.PressedOpacity="0.6"
 							xct:TouchEffect.Command="{Binding NavigateCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}" 
 							xct:TouchEffect.CommandParameter="{Binding .}">
 
-							<Label Text="{Binding Title}" FontSize="22"/>
-							<Label Text="{Binding Description}" FontSize="16"/>
-						</StackLayout>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="auto"/>
+							</Grid.ColumnDefinitions>
+
+							<StackLayout
+								Grid.Column="0"
+								Padding="20,10"
+								Spacing="3"
+								VerticalOptions="CenterAndExpand">
+								<Label Text="{Binding Title}" FontSize="20"/>
+								<Label Text="{Binding Description}" FontSize="14" Opacity="0.5"/>
+							</StackLayout>
+
+
+						</Grid>
 					</ViewCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>

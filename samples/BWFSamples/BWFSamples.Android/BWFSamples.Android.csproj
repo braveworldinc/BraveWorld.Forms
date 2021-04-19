@@ -121,6 +121,10 @@
       <Project>{874c8f41-4997-47da-86bc-024b72da56c7}</Project>
       <Name>BWFSamples</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\src\BraveWorld.Forms\BraveWorld.Forms.csproj">
+      <Project>{BC461E67-69C2-4419-88C7-E00EF220ABE6}</Project>
+      <Name>BraveWorld.Forms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

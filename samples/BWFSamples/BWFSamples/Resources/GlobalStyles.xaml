@@ -11,6 +11,9 @@
 		<Setter Property="ios:Page.LargeTitleDisplay" Value="Never"/>
 		<Setter Property="ios:Page.UseSafeArea" Value="True"/>
 	</Style>
+	<Style TargetType="Page" ApplyToDerivedTypes="True" Class="Master">
+		<Setter Property="ios:Page.LargeTitleDisplay" Value="Never"/>
+	</Style>
 
 	<Style TargetType="TabbedPage" ApplyToDerivedTypes="True">
 		<Setter Property="ios:TabbedPage.TranslucencyMode" Value="Translucent"/>
