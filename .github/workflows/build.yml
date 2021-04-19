@@ -1,5 +1,5 @@
 name: Xamarin Build
-
+  
 on: 
   workflow_dispatch:
   push:
@@ -26,3 +26,31 @@ jobs:
       run: |
         cd ..
         ls
+
+  Android:
+
+    runs-on: macos-latest
+    
+    steps:
+
+    - uses: actions/checkout@v1
+      
+    - name: Android
+      run: |
+        cd src/BraveWorld.Forms/
+        nuget restore
+        msbuild BraveWorld.Forms.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+
+  iOS:
+
+    runs-on: macos-latest
+    
+    steps:
+
+    - uses: actions/checkout@v1
+      
+    - name: iOS
+      run: |
+        cd src/BraveWorld.Forms/
+        nuget restore
+        msbuild BraveWorld.Forms.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
