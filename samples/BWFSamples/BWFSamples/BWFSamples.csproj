@@ -38,7 +38,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Resouces\GlobalStyles.xaml">
+    <EmbeddedResource Update="Resources\GlobalStyles.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
