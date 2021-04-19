@@ -28,7 +28,7 @@
     <PackageIconUrl>ICON URL</PackageIconUrl>
     <PackageLicenseUrl>LINK TO LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>LINK TO PROJECT</PackageProjectUrl>
-    <RepositoryUrl>LINK TO PROJECT</RepositoryUrl>
+    <RepositoryUrl>https://github.com/braveworldinc/BraveWorld.Forms/</RepositoryUrl>
     <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
 
     <NeutralLanguage>en</NeutralLanguage>
