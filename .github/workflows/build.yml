@@ -37,8 +37,8 @@ jobs:
       
     - name: Android
       run: |
-        cd src/BraveWorld.Forms/
         nuget restore
+        cd src/BraveWorld.Forms/
         msbuild BraveWorld.Forms.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
 
   iOS:
@@ -51,6 +51,6 @@ jobs:
       
     - name: iOS
       run: |
-        cd src/BraveWorld.Forms/
         nuget restore
+        cd src/BraveWorld.Forms/
         msbuild BraveWorld.Forms.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
