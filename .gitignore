@@ -1,6 +1,6 @@
 # Project Specific
 secrets.json
-
+*.psd
 
 # MacOS
 .DS_Store
