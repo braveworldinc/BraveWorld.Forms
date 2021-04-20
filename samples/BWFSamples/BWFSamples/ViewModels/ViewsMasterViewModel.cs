@@ -15,10 +15,14 @@ namespace BWFSamples.ViewModels
         {
             new ViewDefinitionModel(typeof(SymbolImageSourcePage), "Symbol Image Source", "Description Goes Here",
                 conditions:m => BraveWorld.Forms.BraveLibrary.PreviewFeatures.SymbolImageSource,
-                platforms:new[] { Device.iOS, Device.Android })
+                platforms:new[] { Device.iOS, Device.Android }),
+            new ViewDefinitionModel(typeof(ButtonsPage), "Buttons", "Description Goes Here")
         };
 
         protected override IEnumerable<ViewDefinitionModel> CreateItems()
-            => viewsList.Where(p => p.IsVisibleWithConditions(p) && p.Platforms.Contains(Device.RuntimePlatform));
+        {
+            return viewsList;
+            //return viewsList.Where(p => p.IsVisibleWithConditions(p) && p.Platforms.Contains(Device.RuntimePlatform));
+        }
     }
 }

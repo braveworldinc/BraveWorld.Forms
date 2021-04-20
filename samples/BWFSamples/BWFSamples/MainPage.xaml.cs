@@ -5,17 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using BraveWorld.Forms.Views;
 
 namespace BWFSamples
 {
     public partial class MainPage : BraveWorld.Forms.Views.MasterDetailView
     {
-        public MainPage()
-        {
-            InitializeComponent();
+        public MainPage() => InitializeComponent();
 
-            //libraryVersion.Text = BraveWorld.Forms.BraveLibrary.Version.ToString();
-            //appVersion.Text = Xamarin.Essentials.VersionTracking.CurrentVersion;
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ShowChangelogWindow();
+        }
+
+        private async Task ShowChangelogWindow()
+        {
+            await WhatsNewPage.ShowModal(Navigation);
+            await Task.Delay(1000);
+            await WhatsNewPage.ShowModal(Navigation);
         }
     }
 }

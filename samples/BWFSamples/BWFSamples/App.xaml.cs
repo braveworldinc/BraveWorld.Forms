@@ -10,6 +10,7 @@ namespace BWFSamples
     {
         public App()
         {
+            Device.SetFlags(new string[] { "AppTheme_Experimental" });
             InitializeComponent();
 
             BraveLibrary.RegisterAssembly();
