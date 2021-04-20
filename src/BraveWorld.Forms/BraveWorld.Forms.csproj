@@ -109,8 +109,6 @@
     <Folder Include="Resources\" />
     <Folder Include="Views\" />
 
-    <Folder Include="Views\SymbolImageSource\" />
-
     <Compile Include="**\*.shared.cs" />
 
     <!--<None Remove="**\*.shared.xaml" />-->

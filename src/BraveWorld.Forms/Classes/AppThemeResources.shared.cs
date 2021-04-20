@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 
-namespace BraveWorld.Forms
+namespace BraveWorld.Forms.Classes
 {
     public interface IAppThemeResource
     {

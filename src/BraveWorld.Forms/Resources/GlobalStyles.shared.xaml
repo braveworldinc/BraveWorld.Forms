@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="BraveWorld.Forms.Resources.GlobalStyles"
+			xmlns:local="clr-namespace:BraveWorld.Forms.Resources"
+			xmlns:classes="clr-namespace:BraveWorld.Forms.Classes"
+			xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+			xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core">
+
+	<ResourceDictionary.MergedDictionaries>
+		<local:ThemeColors/>
+	</ResourceDictionary.MergedDictionaries>
+
+	
+
+	<x:Int32 x:Key="RoundedCornersRadius">10</x:Int32>
+
+
+	<Style TargetType="Page" ApplyToDerivedTypes="True">
+		<Setter Property="ios:Page.LargeTitleDisplay" Value="Never"/>
+		<Setter Property="ios:Page.UseSafeArea" Value="True"/>
+	</Style>
+	<Style TargetType="Page" ApplyToDerivedTypes="True" Class="Master">
+		<Setter Property="ios:Page.LargeTitleDisplay" Value="Never"/>
+	</Style>
+
+	<Style TargetType="TabbedPage" ApplyToDerivedTypes="True">
+		<Setter Property="ios:TabbedPage.TranslucencyMode" Value="Translucent"/>
+		<Setter Property="BackgroundColor" Value="Red"/>
+	</Style>
+
+	<Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
+		<Setter Property="ios:NavigationPage.IsNavigationBarTranslucent" Value="True"/>
+		<Setter Property="ios:NavigationPage.PrefersLargeTitles" Value="True"/>
+		<!--<Setter Property="NavigationPage.BarBackgroundColor" Value="#00000000"/>-->
+		<Setter Property="ios:NavigationPage.HideNavigationBarSeparator" Value="False"/>
+	</Style>
+
+
+
+	<Style TargetType="ListView" ApplyToDerivedTypes="True">
+		<Setter Property="SelectionMode" Value="None"/>
+		<Setter Property="ios:ListView.RowAnimationsEnabled" Value="True"/>
+	</Style>
+
+
+	<Style TargetType="Entry">
+		<Setter Property="ios:Entry.CursorColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+	</Style>
+
+	<Style TargetType="Button">
+		<Setter Property="TextColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="FontAttributes" Value="Bold"/>
+		<Setter Property="Margin" Value="10"/>
+		<Setter Property="Padding" Value="10,5"/>
+		<Setter Property="CornerRadius" Value="{StaticResource RoundedCornersRadius}"/>
+	</Style>
+
+	<Style x:Key="ButtonFilled" TargetType="Button">
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="TextColor" Value="{DynamicResource ForegroundDark}"/>
+	</Style>
+
+	<!--<Style TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="{DynamicResource Primary}"/>
+    </Style>-->
+</ResourceDictionary>
