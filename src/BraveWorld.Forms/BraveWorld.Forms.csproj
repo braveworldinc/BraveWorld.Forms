@@ -106,12 +106,18 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Resources\" />
     <Folder Include="Views\" />
+
     <Folder Include="Views\SymbolImageSource\" />
 
     <Compile Include="**\*.shared.cs" />
-    <Compile Include="**\*.shared.*.cs" />
-    
+
+    <!--<None Remove="**\*.shared.xaml" />-->
+    <Compile Include="**\*.shared.xaml.cs" DependentUpon="%(Filename)" />
+    <EmbeddedResource Include="**\*.shared.xaml" Generator="MSBuild:UpdateDesignTimeXaml" />
+
+
     <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
     <None Include="..\..\assets\icon.png" PackagePath="icon.png" Pack="true" />
 
