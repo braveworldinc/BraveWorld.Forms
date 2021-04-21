@@ -12,8 +12,8 @@
     Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <x:Double x:Key="IconSize">72</x:Double>
-            <x:Single x:Key="IconCornerRadius">15</x:Single>
+            <OnIdiom x:Key="IconSize" x:TypeArguments="x:Double" Phone="72" Tablet="128"/>
+            <OnIdiom x:Key="IconCornerRadius" x:TypeArguments="x:Single" Phone="16" Tablet="28"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -31,6 +31,7 @@
             <StackLayout Grid.Row="0" Padding="10,25" Spacing="5">
                 <Frame HorizontalOptions="Center"
                        VerticalOptions="Center"
+                       BackgroundColor="Transparent"
                        Padding="0"
                        IsClippedToBounds="True"
                        CornerRadius="{StaticResource IconCornerRadius}"
@@ -49,13 +50,14 @@
                 <Label x:Name="versionLabel" FontSize="18" HorizontalTextAlignment="Center" Text="Version X.X.X"/>
             </StackLayout>
 
-            <!--<ScrollView Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout VerticalOptions="CenterAndExpand">
-                    <Label Text="Changes go here"/>
-                </StackLayout>
-            </ScrollView>-->
-
             <CollectionView Grid.Row="1" x:Name="changesCollectionView" VerticalOptions="CenterAndExpand">
+                <CollectionView.HeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="25,5">
+                            <Label Text="{Binding}" FontSize="18" FontAttributes="Bold" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.HeaderTemplate>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
                         <Label Text="{Binding ., StringFormat='&#x2022; {0}'}" Padding="25,5"/>

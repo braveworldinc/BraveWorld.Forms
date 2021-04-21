@@ -15,6 +15,7 @@
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ProvisioningType>automatic</ProvisioningType>
+    <ReleaseVersion>0.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -159,5 +160,12 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iphone-29x29%403x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIconLarge.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIconLarge.imageset\mac-128x128.png" />
+    <ImageAsset Include="Assets.xcassets\AppIconLarge.imageset\mac-256x256%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIconLarge.imageset\mac-128x128%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\AppIconLarge.imageset\" />
   </ItemGroup>
 </Project>

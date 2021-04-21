@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 using BraveWorld.Forms.Views;
 
 namespace BWFSamples
@@ -27,7 +28,7 @@ namespace BWFSamples
 
         private async Task ShowChangelogWindow()
         {
-            await WhatsNewPage.ShowModal(Navigation, changes: changelog, Xamarin.Essentials.AppInfo.VersionString);
+            await WhatsNewPage.ShowModal(Navigation, new WhatsNewInfo("BraveWorld.Forms", AppInfo.VersionString, changelog, "What's New", icon: "AppIconLarge"));
         }
     }
 }

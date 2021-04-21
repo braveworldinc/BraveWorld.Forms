@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="com.braveworld.bwfsamples" android:installLocation="auto" android:versionName="0.1">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="com.braveworld.bwfsamples" android:installLocation="auto" android:versionName="0.1.1">
 	<uses-sdk android:minSdkVersion="25" android:targetSdkVersion="30" />
 	<application android:label="BWFSamples.Android" android:theme="@style/MainTheme" android:icon="@mipmap/ic_launcher"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
