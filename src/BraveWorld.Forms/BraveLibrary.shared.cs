@@ -11,6 +11,7 @@ namespace BraveWorld.Forms
     {
         static Assembly AssemblyCache;
 
+        public static string Name => "BraveWorld.Forms";
         public static Version Version => Assembly.GetExecutingAssembly().GetName().Version;
 
         /// <summary>

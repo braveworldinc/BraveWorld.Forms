@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using BraveWorld.Forms;
 using BraveWorld.Forms.Views;
 
 namespace BWFSamples
@@ -16,8 +17,8 @@ namespace BWFSamples
 
         private string[] changelog => new[]
         {
-            "Created sample app.",
-            "Created a \"What's New\" popup."
+            $"Updated: {BraveLibrary.Name} to {BraveLibrary.Version}",
+            "Added: Background and gradient to \"What's New\" popup."
         };
 
         protected override void OnAppearing()
@@ -28,7 +29,7 @@ namespace BWFSamples
 
         private async Task ShowChangelogWindow()
         {
-            await WhatsNewPage.ShowModal(Navigation, new WhatsNewInfo("BraveWorld.Forms", AppInfo.VersionString, changelog, "What's New", icon: "AppIconLarge"));
+            await WhatsNewPage.ShowModal(Navigation, new WhatsNewInfo(BraveLibrary.Name, AppInfo.VersionString, changelog, icon: "AppIconLarge"));
         }
     }
 }

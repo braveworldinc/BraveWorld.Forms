@@ -16,7 +16,7 @@
     <Title>BraveWorld.Forms</Title>
     <Description>An SDK-styled Xamarin.Forms library used at BraveWorld, Inc</Description>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <ReleaseVersion>0.0.1.21</ReleaseVersion>
+    <ReleaseVersion>0.0.1.23</ReleaseVersion>
     <Version>$(ReleaseVersion)</Version>
     <AssemblyVersion>$(ReleaseVersion)</AssemblyVersion>
     <AssemblyFileVersion>$(ReleaseVersion)</AssemblyFileVersion>
@@ -27,7 +27,7 @@
     <Company>BraveWorld, Inc</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageIcon>icon.png</PackageIcon>
+    <PackageIcon>package-icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/braveworldinc/BraveWorld.Forms</PackageProjectUrl>
     <RepositoryUrl>https://github.com/braveworldinc/BraveWorld.Forms/</RepositoryUrl>
     <PackageReleaseNotes>RELEASE NOTES</PackageReleaseNotes>
@@ -117,7 +117,7 @@
 
 
     <None Include="..\..\LICENSE" PackagePath="" Pack="true" />
-    <None Include="..\..\assets\icon.png" PackagePath="icon.png" Pack="true" />
+    <None Include="..\..\assets\package-icon.png" PackagePath="icon.png" Pack="true" />
 
     <!--
     <PackageReference Include="mdoc" Version="5.8.0" PrivateAssets="all" />

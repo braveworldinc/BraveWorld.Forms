@@ -50,6 +50,10 @@
     
     <Color x:Key="Gray6">#f2f2f7</Color>
     <Color x:Key="Gray6Dark">#1c1c1e</Color>
+    <Color x:Key="Gray6Alpha50">#80f2f2f7</Color>
+    <Color x:Key="Gray6DarkAlpha50">#801c1c1e</Color>
+    <Color x:Key="Gray6Alpha0">#00f2f2f7</Color>
+    <Color x:Key="Gray6DarkAlpha0">#001c1c1e</Color>
 
     
     <Color x:Key="Foreground">#000</Color>

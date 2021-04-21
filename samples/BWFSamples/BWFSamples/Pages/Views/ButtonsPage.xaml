@@ -15,7 +15,8 @@
     <local:BasePage.Content>
         <ScrollView>
             <StackLayout Spacing="10" Padding="10">
-                <Button Style="{DynamicResource ButtonFilled}" Text="Button"/>
+                <Button Text="Button (Normal)"/>
+                <Button Style="{DynamicResource ButtonFilled}" Text="Button (Filled)"/>
             </StackLayout>
         </ScrollView>
     </local:BasePage.Content>

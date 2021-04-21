@@ -4,6 +4,7 @@
             x:Class="BraveWorld.Forms.Resources.GlobalStyles"
 			xmlns:local="clr-namespace:BraveWorld.Forms.Resources"
 			xmlns:classes="clr-namespace:BraveWorld.Forms.Classes"
+			xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
 			xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
 			xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core">
 
@@ -11,34 +12,44 @@
 		<local:ThemeColors/>
 	</ResourceDictionary.MergedDictionaries>
 
-	
+	<Color x:Key="Primary">#007bff</Color>
+    <Color x:Key="PrimaryDark">#0a84ff</Color>
 
 	<x:Int32 x:Key="RoundedCornersRadius">10</x:Int32>
 
 
-	<Style TargetType="Page" ApplyToDerivedTypes="True">
+	<Style TargetType="Page">
 		<Setter Property="ios:Page.LargeTitleDisplay" Value="Never"/>
 		<Setter Property="ios:Page.UseSafeArea" Value="True"/>
 	</Style>
-	<Style TargetType="Page" ApplyToDerivedTypes="True" Class="Master">
+	<Style TargetType="Page" Class="Master">
 		<Setter Property="ios:Page.LargeTitleDisplay" Value="Never"/>
 	</Style>
 
-	<Style TargetType="TabbedPage" ApplyToDerivedTypes="True">
+	<Style TargetType="TabbedPage">
 		<Setter Property="ios:TabbedPage.TranslucencyMode" Value="Translucent"/>
-		<Setter Property="BackgroundColor" Value="Red"/>
+		<Setter Property="SelectedTabColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 	</Style>
 
-	<Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
+	<Style TargetType="NavigationPage">
 		<Setter Property="ios:NavigationPage.IsNavigationBarTranslucent" Value="True"/>
 		<Setter Property="ios:NavigationPage.PrefersLargeTitles" Value="True"/>
+		<Setter Property="BarTextColor" Value="Red"/>
+		<!--<Setter Property="BarBackgroundColor" Value="Red"/>-->
 		<!--<Setter Property="NavigationPage.BarBackgroundColor" Value="#00000000"/>-->
 		<Setter Property="ios:NavigationPage.HideNavigationBarSeparator" Value="False"/>
 	</Style>
 
+	<Style TargetType="ContentPage" Class="Transparent">
+		<Setter Property="NavigationPage.BarBackgroundColor" Value="#00000000"/>
+	</Style>
+
+	<Style TargetType="ImageButton">
+		<Setter Property="xct:IconTintColorEffect.TintColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+	</Style>
 
 
-	<Style TargetType="ListView" ApplyToDerivedTypes="True">
+	<Style TargetType="ListView">
 		<Setter Property="SelectionMode" Value="None"/>
 		<Setter Property="ios:ListView.RowAnimationsEnabled" Value="True"/>
 	</Style>
@@ -53,12 +64,19 @@
 		<Setter Property="FontAttributes" Value="Bold"/>
 		<Setter Property="Margin" Value="10"/>
 		<Setter Property="Padding" Value="10,5"/>
+		<Setter Property="BackgroundColor" Value="Transparent"/>
 		<Setter Property="CornerRadius" Value="{StaticResource RoundedCornersRadius}"/>
 	</Style>
 
 	<Style x:Key="ButtonFilled" TargetType="Button">
 		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 		<Setter Property="TextColor" Value="{DynamicResource ForegroundDark}"/>
+	</Style>
+
+	<Style TargetType="Frame">
+		<Setter Property="HasShadow" Value="False"/>
+		<Setter Property="BorderColor" Value="Transparent"/>
+		<Setter Property="CornerRadius" Value="0"/>
 	</Style>
 
 	<!--<Style TargetType="ActivityIndicator">

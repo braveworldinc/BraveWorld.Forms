@@ -79,10 +79,10 @@ namespace BraveWorld.Forms.Views
         internal void SetInfo(string title, string version, IEnumerable<string> changes, string? icon, string? headerText)
         {
             Title = title;
-            titleLabel.Text = title;
+            titleLabel.Text = Title;
             versionLabel.Text = $"Version {version}";
             appIcon.Source = icon ?? "AppIcon";
-            changesCollectionView.Header = headerText;
+            changesCollectionView.Header = headerText ?? "What's New";
             SetChanges(changes);
         }
         internal void SetInfo(WhatsNewInfo info)
@@ -104,12 +104,12 @@ namespace BraveWorld.Forms.Views
 
         public static async Task ShowModal(INavigation navigation, IEnumerable<string> changes, string version = "4.2.0")
         {
-            await ShowModal(navigation, new WhatsNewInfo("What's New", version, changes, null, "AppIcon"));
+            await ShowModal(navigation, new WhatsNewInfo("Title", version, changes: changes, null, "AppIcon"));
         }
 
         public static async Task ShowModal(INavigation navigation, IEnumerable<string> changes, string version = "4.2.0", string icon = "AppIcon")
         {
-            await ShowModal(navigation, new WhatsNewInfo("What's New", version, changes, null, icon));
+            await ShowModal(navigation, new WhatsNewInfo("Title", version, changes, null, icon));
         }
     }
 }

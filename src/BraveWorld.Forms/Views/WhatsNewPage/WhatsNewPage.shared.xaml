@@ -7,68 +7,89 @@
     xmlns:bwf="http://braveworldinc.com/forms"
     xmlns:local="clr-namespace:BraveWorld.Forms.Views"
     xmlns:essentials="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
+    xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.Core"
     ios:Page.ModalPresentationStyle="FormSheet"
     NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{AppThemeBinding Default={StaticResource Gray6}, Dark={StaticResource Gray6Dark}}"
     Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <OnIdiom x:Key="IconSize" x:TypeArguments="x:Double" Phone="72" Tablet="128"/>
             <OnIdiom x:Key="IconCornerRadius" x:TypeArguments="x:Single" Phone="16" Tablet="28"/>
+            <forms:Thickness x:Key="CollectionViewItemPadding">35,5</forms:Thickness>
+
+            <x:Double x:Key="HeaderHeight">256</x:Double>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Done" Clicked="OnDismissButtonClicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <Grid>
+            <Grid Padding="0,0,0,50" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource HeaderHeight}"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
 
-        <Grid Padding="0,50,0,20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0" BackgroundColor="{AppThemeBinding Default={StaticResource Gray6}, Dark={StaticResource Gray6Dark}}" VerticalOptions="StartAndExpand">
+                    <Image Source="silhouette-of-mountains-1323550" Aspect="AspectFill" VerticalOptions="FillAndExpand"/>
+                    <Frame BorderColor="Transparent" HasShadow="False" CornerRadius="0">
+                        <Frame.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{AppThemeBinding Default={StaticResource Gray6Alpha0}, Dark={StaticResource Gray6DarkAlpha0}}" Offset="0" />
+                                <GradientStop Color="{AppThemeBinding Default={StaticResource Gray6}, Dark={StaticResource Gray6Dark}}" Offset="1" />
+                            </LinearGradientBrush>
+                        </Frame.Background>
+                        <Frame.Content>
+                            <StackLayout Margin="0,25" Padding="{StaticResource CollectionViewItemPadding}" Spacing="5">
+                                <Frame HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       BackgroundColor="Transparent"
+                                       Padding="0"
+                                       IsClippedToBounds="True"
+                                       CornerRadius="{StaticResource IconCornerRadius}"
+                                       Margin="10"
+                                       HasShadow="False"
+                                       HeightRequest="{StaticResource IconSize}"
+                                       WidthRequest="{StaticResource IconSize}">
 
-            <StackLayout Grid.Row="0" Padding="10,25" Spacing="5">
-                <Frame HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       BackgroundColor="Transparent"
-                       Padding="0"
-                       IsClippedToBounds="True"
-                       CornerRadius="{StaticResource IconCornerRadius}"
-                       Margin="10"
-                       HasShadow="False"
-                       HeightRequest="{StaticResource IconSize}"
-                       WidthRequest="{StaticResource IconSize}">
+                                    <Image x:Name="appIcon"
+                                        Source="AppIcon"
+                                        HeightRequest="{StaticResource IconSize}"
+                                        WidthRequest="{StaticResource IconSize}"/>
+                                </Frame>
 
-                    <Image x:Name="appIcon"
-                        Source="AppIcon"
-                        HeightRequest="{StaticResource IconSize}"
-                        WidthRequest="{StaticResource IconSize}"/>
-                </Frame>
+                                <Label x:Name="titleLabel" FontSize="28" HorizontalTextAlignment="Center" Text="Title Goes Here"/>
+                                <Label x:Name="versionLabel" FontSize="16" Opacity="0.5" FontAttributes="Bold" HorizontalTextAlignment="Center" Text="Version X.X.X"/>
+                            </StackLayout>
+                        </Frame.Content>
+                    </Frame>
+                </Grid>
 
-                <Label x:Name="titleLabel" FontSize="30" HorizontalTextAlignment="Center" Text="What's New"/>
-                <Label x:Name="versionLabel" FontSize="18" HorizontalTextAlignment="Center" Text="Version X.X.X"/>
-            </StackLayout>
+                <CollectionView Grid.Row="1" x:Name="changesCollectionView" VerticalOptions="CenterAndExpand">
+                    <CollectionView.HeaderTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="{StaticResource CollectionViewItemPadding}">
+                                <Label Text="{Binding}" FontSize="20" FontAttributes="Bold" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.HeaderTemplate>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <StackLayout Padding="{StaticResource CollectionViewItemPadding}">
+                                <Label Text="{Binding ., StringFormat='&#x2022; {0}'}" FontSize="16" Padding="0" Margin="0"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-            <CollectionView Grid.Row="1" x:Name="changesCollectionView" VerticalOptions="CenterAndExpand">
-                <CollectionView.HeaderTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="25,5">
-                            <Label Text="{Binding}" FontSize="18" FontAttributes="Bold" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.HeaderTemplate>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="x:String">
-                        <Label Text="{Binding ., StringFormat='&#x2022; {0}'}" Padding="25,5"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-            <StackLayout Grid.Row="2" Spacing="5" Padding="10">
-                <Button Style="{DynamicResource ButtonFilled}" Text="Continue" Clicked="OnDismissButtonClicked"/>
-            </StackLayout>
+                <StackLayout Grid.Row="2" Spacing="0" Padding="{StaticResource CollectionViewItemPadding}" Margin="0,10">
+                    <Button Style="{DynamicResource ButtonFilled}" Text="Continue" Clicked="OnDismissButtonClicked"/>
+                </StackLayout>
+            </Grid>
         </Grid>
-
     </ContentPage.Content>
 </ContentPage>
