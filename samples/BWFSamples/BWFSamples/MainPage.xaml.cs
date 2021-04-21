@@ -13,7 +13,11 @@ namespace BWFSamples
     {
         public MainPage() => InitializeComponent();
 
-
+        private string[] changelog => new[]
+        {
+            "Created sample app.",
+            "Created a \"What's New\" popup."
+        };
 
         protected override void OnAppearing()
         {
@@ -23,9 +27,7 @@ namespace BWFSamples
 
         private async Task ShowChangelogWindow()
         {
-            await WhatsNewPage.ShowModal(Navigation);
-            await Task.Delay(1000);
-            await WhatsNewPage.ShowModal(Navigation);
+            await WhatsNewPage.ShowModal(Navigation, changes: changelog, Xamarin.Essentials.AppInfo.VersionString);
         }
     }
 }
