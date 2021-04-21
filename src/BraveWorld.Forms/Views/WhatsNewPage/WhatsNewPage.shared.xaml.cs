@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -49,8 +51,12 @@ namespace BraveWorld.Forms.Views
 
         public WhatsNewInfo Info { get; private set; }
 
-        public ICommand DismissCommand { get; }
-
+        private ObservableCollection<string> _changes = new ObservableCollection<string>();
+        public ObservableCollection<string> Changes
+        {
+            get => _changes;
+            set => _changes = value;
+        }
         #endregion
 
         public WhatsNewPage()
@@ -59,21 +65,45 @@ namespace BraveWorld.Forms.Views
             Title = "What's New";
         }
 
-        internal static Xamarin.Forms.NavigationPage GetNavigationPage() => Instance.Navigation;
+        internal Xamarin.Forms.NavigationPage GetNavigationPage() => Instance.Navigation;
 
-        public static async Task DismissModal()
+        public async void OnDismissButtonClicked(object sender, EventArgs args) => await DismissModal();
+
+
+        internal void SetChanges(IEnumerable<string> changes)
         {
-            await ParentNavigation.PopModalAsync();
+            Changes = new ObservableCollection<string>(changes);
+            changesCollectionView.ItemsSource = Changes;
         }
 
-        public static async Task ShowModal(INavigation navigation)
+        internal void SetInfo(string title, string version, IEnumerable<string> changes, string? icon)
         {
-            Xamarin.Forms.NavigationPage navPage = GetNavigationPage();
+            Title = title;
+            titleLabel.Text = title;
+            versionLabel.Text = $"Version {version}";
+            appIcon.Source = icon ?? "AppIcon";
+            SetChanges(changes);
+        }
+        internal void SetInfo(WhatsNewInfo info)
+        {
+            SetInfo(info.Title, info.Version, info.Changes, info.Icon);
+        }
+
+
+
+        public static async Task DismissModal() => await ParentNavigation.PopModalAsync();
+
+        public static async Task ShowModal(INavigation navigation, WhatsNewInfo info)
+        {
+            Xamarin.Forms.NavigationPage navPage = Instance.GetNavigationPage();
+            Instance.SetInfo(info);
             ParentNavigation = navigation;
             await ParentNavigation.PushModalAsync(navPage);
         }
 
-
-        public async void OnDismissButtonClicked(object sender, EventArgs args) => await DismissModal();
+        public static async Task ShowModal(INavigation navigation, IEnumerable<string> changes, string version = "4.2.0")
+        {
+            await ShowModal(navigation, new WhatsNewInfo("What's New", version, changes, "AppIcon"));
+        }
     }
 }

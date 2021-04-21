@@ -8,7 +8,12 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace BraveWorld.Forms.Views.Base
 {
-    public partial class BaseModalPage<TPage> : ContentPage where TPage : ContentPage, new()
+    public abstract class BaseModalPage : ContentPage
+    {
+
+    }
+
+    public abstract class BaseModalPage<TPage> : ContentPage where TPage : ContentPage
     {
         #region Properties
         #region Singleton
