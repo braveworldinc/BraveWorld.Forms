@@ -66,12 +66,55 @@
 		<Setter Property="Padding" Value="10,5"/>
 		<Setter Property="BackgroundColor" Value="Transparent"/>
 		<Setter Property="CornerRadius" Value="{StaticResource RoundedCornersRadius}"/>
+		
+		<Setter Property="xct:TouchEffect.AnimationEasing" Value="CubicInOut"/>
+		<Setter Property="xct:TouchEffect.PressedOpacity" Value="0.5"/>
+		<Setter Property="xct:TouchEffect.NormalAnimationDuration" Value="250"/>
+		<Setter Property="xct:TouchEffect.PressedAnimationDuration" Value="0"/>
 	</Style>
 
-	<Style x:Key="ButtonFilled" TargetType="Button">
+	<Style x:Key="ButtonShadowedBase" TargetType="Button">
+		<Setter Property="xct:ShadowEffect.Radius" Value="3"/>
+		<Setter Property="xct:ShadowEffect.Color" Value="Black"/>
+		<Setter Property="xct:ShadowEffect.OffsetY" Value="2"/>
+		<Setter Property="xct:ShadowEffect.Opacity" Value="0.3"/>
+	</Style>
+
+	<Style x:Key="ButtonGlowBase" TargetType="Button">
+		<Setter Property="xct:ShadowEffect.Color" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="xct:ShadowEffect.OffsetY" Value="0"/>
+		<Setter Property="xct:ShadowEffect.Opacity" Value="1"/>
+		<Setter Property="xct:ShadowEffect.Radius" Value="5"/>
+	</Style>
+
+	<Style x:Key="ButtonFilled" BasedOn="{StaticResource ButtonShadowedBase}" TargetType="Button">
 		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 		<Setter Property="TextColor" Value="{DynamicResource ForegroundDark}"/>
 	</Style>
+
+	<Style x:Key="ButtonBordered" BasedOn="{StaticResource ButtonShadowedBase}" TargetType="Button">
+		<Setter Property="BorderColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="BorderWidth" Value="1"/>
+		<Setter Property="TextColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Background}, Dark={StaticResource BackgroundDark}}"/>
+		<Setter Property="xct:TouchEffect.PressedBackgroundColor" Value="{AppThemeBinding Default={StaticResource Background}, Dark={StaticResource BackgroundDark}}"/>
+	</Style>
+
+
+	<Style x:Key="ButtonFilledGlow" BasedOn="{StaticResource ButtonGlowBase}" TargetType="Button">
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="TextColor" Value="{DynamicResource ForegroundDark}"/>
+		<Setter Property="BorderColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="BorderWidth" Value="1"/>
+	</Style>
+
+	<Style x:Key="ButtonBorderedGlow" BasedOn="{StaticResource ButtonGlowBase}" TargetType="Button">
+		<Setter Property="BorderColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="BorderWidth" Value="1"/>
+		<Setter Property="TextColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="BackgroundColor" Value="Transparent"/>
+	</Style>
+
 
 	<Style TargetType="Frame">
 		<Setter Property="HasShadow" Value="False"/>

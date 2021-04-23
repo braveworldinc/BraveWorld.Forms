@@ -16,7 +16,8 @@ namespace BWFSamples.ViewModels
             new ViewDefinitionModel(typeof(SymbolImageSourcePage), "Symbol Image Source", "Description Goes Here",
                 conditions:m => BraveWorld.Forms.BraveLibrary.PreviewFeatures.SymbolImageSource,
                 platforms:new[] { Device.iOS, Device.Android }),
-            new ViewDefinitionModel(typeof(ButtonsPage), "Buttons", "Description Goes Here")
+            new ViewDefinitionModel(typeof(ButtonsPage), "Buttons", "Description Goes Here"),
+            new ViewDefinitionModel(typeof(ColorsPage), "Colors", "Description Goes Here")
         };
 
         protected override IEnumerable<ViewDefinitionModel> CreateItems()

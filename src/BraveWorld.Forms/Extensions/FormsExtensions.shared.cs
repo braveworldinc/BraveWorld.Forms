@@ -17,5 +17,21 @@ namespace BraveWorld.Forms.Extensions
         {
             await Application.Current.MainPage.DisplayAlert("Exception Thrown", e.Message, "Great...");
         }
+
+        public static string ToHexString(this Color color, bool includeAlpha = false)
+        {
+            var red = (int)(color.R * 255);
+            var green = (int)(color.G * 255);
+            var blue = (int)(color.B * 255);
+            var alpha = (int)(color.A * 255);
+            string hex;
+
+            if (includeAlpha)
+                hex = $"#{alpha:X2}{red:X2}{green:X2}{blue:X2}";
+            else
+                hex = $"#{red:X2}{green:X2}{blue:X2}";
+
+            return hex;
+        }
     }
 }

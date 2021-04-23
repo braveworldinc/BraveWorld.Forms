@@ -18,7 +18,7 @@ namespace BWFSamples
         private string[] changelog => new[]
         {
             $"Updated: {BraveLibrary.Name} to {BraveLibrary.Version}",
-            "Added: Background and gradient to \"What's New\" popup."
+            "Added: System Colors Viewer"
         };
 
         protected override void OnAppearing()

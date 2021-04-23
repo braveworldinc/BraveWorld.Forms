@@ -30,6 +30,7 @@
     <MtouchDebug>true</MtouchDebug>
     <LangVersion>8.0</LangVersion>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchSdkVersion>14.5</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>

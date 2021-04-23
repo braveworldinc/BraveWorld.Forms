@@ -17,6 +17,9 @@
             <StackLayout Spacing="10" Padding="10">
                 <Button Text="Button (Normal)"/>
                 <Button Style="{DynamicResource ButtonFilled}" Text="Button (Filled)"/>
+                <Button Style="{DynamicResource ButtonBordered}" Text="Button (Bordered)"/>
+                <Button Style="{DynamicResource ButtonFilledGlow}" Text="Button (Filled, Glow)"/>
+                <Button Style="{DynamicResource ButtonBorderedGlow}" Text="Button (Bordered, Glow)"/>
             </StackLayout>
         </ScrollView>
     </local:BasePage.Content>

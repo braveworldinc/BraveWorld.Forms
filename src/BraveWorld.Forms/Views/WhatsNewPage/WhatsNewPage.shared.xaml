@@ -8,6 +8,7 @@
     xmlns:local="clr-namespace:BraveWorld.Forms.Views"
     xmlns:essentials="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
     xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.Core"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     ios:Page.ModalPresentationStyle="FormSheet"
     NavigationPage.HasNavigationBar="False"
     BackgroundColor="{AppThemeBinding Default={StaticResource Gray6}, Dark={StaticResource Gray6Dark}}"
@@ -87,7 +88,11 @@
                 </CollectionView>
 
                 <StackLayout Grid.Row="2" Spacing="0" Padding="{StaticResource CollectionViewItemPadding}" Margin="0,10">
-                    <Button Style="{DynamicResource ButtonFilled}" Text="Continue" Clicked="OnDismissButtonClicked"/>
+                    <Button
+                        Style="{DynamicResource ButtonFilled}"
+                        Text="Continue"
+                        Clicked="OnDismissButtonClicked">
+                    </Button>
                 </StackLayout>
             </Grid>
         </Grid>

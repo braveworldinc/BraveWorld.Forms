@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<local:BasePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BWFSamples.Pages"
+    xmlns:vm="clr-namespace:BWFSamples.ViewModels.Views"
+    xmlns:model="clr-namespace:BWFSamples.Models"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:classes="clr-namespace:BraveWorld.Forms.Classes;assembly=BraveWorld.Forms"
+    xmlns:bwf="http://braveworldinc.com/forms"
+    Title="{Binding Title}"
+    x:Class="BWFSamples.Pages.Views.ColorsPage">
+    <local:BasePage.BindingContext>
+        <vm:ColorsViewModel/>
+    </local:BasePage.BindingContext>
+    
+    <local:BasePage.Resources>
+        <x:Double x:Key="ColorFrameSize">72</x:Double>
+
+        <Style x:Key="ColorSwatchRectangle" TargetType="Rectangle">
+            <Setter Property="HeightRequest" Value="{StaticResource ColorFrameSize}"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            <Setter Property="Margin" Value="10,0"/>
+        </Style>
+
+        <Style x:Key="ColorNameLabel" TargetType="Label">
+            <Setter Property="FontAttributes" Value="None"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+
+        <Style x:Key="ColorPropertyNameLabel" TargetType="Label">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+        </Style>
+
+        <Style x:Key="ColorValueLabel" TargetType="Label">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Opacity" Value="0.5"/>
+        </Style>
+    </local:BasePage.Resources>
+
+    <local:BasePage.Content>
+        <CollectionView ItemsSource="{Binding Colors}" Footer="System colors based on iOS">
+            <CollectionView.FooterTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="0">
+                        <Label Text="{Binding}" FontSize="12" Opacity="0.5" Margin="25,50" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.FooterTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="classes:SystemColor">
+                    <Grid Padding="25,10" ColumnSpacing="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="10,5"
+                            Text="{Binding Name}"
+                            Style="{DynamicResource ColorNameLabel}"/>
+                        
+                        <StackLayout Grid.Row="1" Grid.Column="0" Spacing="0">
+                            <Rectangle
+                                Style="{DynamicResource ColorSwatchRectangle}"
+                                BackgroundColor="{Binding LightColor}"/>
+
+                            <Label Text="Light" Style="{DynamicResource ColorPropertyNameLabel}"/>
+                            <Label Text="{Binding LightColorHex}" Style="{DynamicResource ColorValueLabel}"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.Column="1" Spacing="0">
+                            <Rectangle
+                                Style="{DynamicResource ColorSwatchRectangle}"
+                                BackgroundColor="{Binding DarkColor}"/>
+
+                            <Label Text="Dark" Style="{DynamicResource ColorPropertyNameLabel}"/>
+                            <Label Text="{Binding DarkColorHex}" Style="{DynamicResource ColorValueLabel}"/>
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </local:BasePage.Content>
+</local:BasePage>
