@@ -13,7 +13,7 @@
 	</ResourceDictionary.MergedDictionaries>
 
 	<Color x:Key="Primary">#007bff</Color>
-    <Color x:Key="PrimaryDark">#0a84ff</Color>
+	<Color x:Key="PrimaryDark">#0a84ff</Color>
 
 	<x:Int32 x:Key="RoundedCornersRadius">10</x:Int32>
 
@@ -66,7 +66,9 @@
 		<Setter Property="Padding" Value="10,5"/>
 		<Setter Property="BackgroundColor" Value="Transparent"/>
 		<Setter Property="CornerRadius" Value="{StaticResource RoundedCornersRadius}"/>
-		
+
+		<Setter Property="xct:VisualFeedbackEffect.FeedbackColor" Value="Transparent"/>
+
 		<Setter Property="xct:TouchEffect.AnimationEasing" Value="CubicInOut"/>
 		<Setter Property="xct:TouchEffect.PressedOpacity" Value="0.5"/>
 		<Setter Property="xct:TouchEffect.NormalAnimationDuration" Value="250"/>

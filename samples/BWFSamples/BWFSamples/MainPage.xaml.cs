@@ -13,18 +13,19 @@ namespace BWFSamples
 {
     public partial class MainPage : BraveWorld.Forms.Views.MasterDetailView
     {
-        public MainPage() => InitializeComponent();
-
         private string[] changelog => new[]
         {
             $"Updated: {BraveLibrary.Name} to {BraveLibrary.Version}",
             "Added: System Colors Viewer"
         };
 
-        protected override void OnAppearing()
+
+        public MainPage()
         {
-            base.OnAppearing();
-            ShowChangelogWindow();
+            InitializeComponent();
+
+            if (VersionTracking.IsFirstLaunchForCurrentBuild)
+                ShowChangelogWindow();
         }
 
         private async Task ShowChangelogWindow()
