@@ -59,6 +59,12 @@
 		<Setter Property="ios:Entry.CursorColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 	</Style>
 
+	<Style TargetType="StackLayout">
+		<Setter Property="Spacing" Value="0"/>
+	</Style>
+	
+	
+
 	<Style TargetType="Button">
 		<Setter Property="TextColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 		<Setter Property="FontAttributes" Value="Bold"/>
@@ -89,12 +95,12 @@
 		<Setter Property="xct:ShadowEffect.Radius" Value="5"/>
 	</Style>
 
-	<Style x:Key="ButtonFilled" BasedOn="{StaticResource ButtonShadowedBase}" TargetType="Button">
+	<Style x:Key="ButtonFilled" TargetType="Button" BasedOn="{StaticResource ButtonShadowedBase}">
 		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 		<Setter Property="TextColor" Value="{DynamicResource ForegroundDark}"/>
 	</Style>
 
-	<Style x:Key="ButtonBordered" BasedOn="{StaticResource ButtonShadowedBase}" TargetType="Button">
+	<Style x:Key="ButtonBordered" TargetType="Button" BasedOn="{StaticResource ButtonShadowedBase}">
 		<Setter Property="BorderColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 		<Setter Property="BorderWidth" Value="1"/>
 		<Setter Property="TextColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
@@ -103,14 +109,14 @@
 	</Style>
 
 
-	<Style x:Key="ButtonFilledGlow" BasedOn="{StaticResource ButtonGlowBase}" TargetType="Button">
+	<Style x:Key="ButtonFilledGlow" TargetType="Button" BasedOn="{StaticResource ButtonGlowBase}">
 		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 		<Setter Property="TextColor" Value="{DynamicResource ForegroundDark}"/>
 		<Setter Property="BorderColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 		<Setter Property="BorderWidth" Value="1"/>
 	</Style>
 
-	<Style x:Key="ButtonBorderedGlow" BasedOn="{StaticResource ButtonGlowBase}" TargetType="Button">
+	<Style x:Key="ButtonBorderedGlow" TargetType="Button" BasedOn="{StaticResource ButtonGlowBase}">
 		<Setter Property="BorderColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 		<Setter Property="BorderWidth" Value="1"/>
 		<Setter Property="TextColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
@@ -122,6 +128,37 @@
 		<Setter Property="HasShadow" Value="False"/>
 		<Setter Property="BorderColor" Value="Transparent"/>
 		<Setter Property="CornerRadius" Value="0"/>
+		<Setter Property="Padding" Value="0"/>
+		<Setter Property="Margin" Value="0"/>
+	</Style>
+
+
+
+	<Style x:Key="CardBase" TargetType="Frame">
+		<Setter Property="CornerRadius" Value="15"/>
+		<Setter Property="Margin" Value="10"/>
+		<Setter Property="IsClippedToBounds" Value="True"/>
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={DynamicResource Background}, Dark={DynamicResource BackgroundDark}}"/>
+
+		<!--
+			<Setter Property="HasShadow" Value="True"/>
+			<Setter Property="xct:ShadowEffect.Radius" Value="3"/>
+			<Setter Property="xct:ShadowEffect.Color" Value="Black"/>
+			<Setter Property="xct:ShadowEffect.OffsetY" Value="2"/>
+			<Setter Property="xct:ShadowEffect.Opacity" Value="0.3"/>
+		-->
+	</Style>
+
+	<Style x:Key="CardBaseInteractable" TargetType="Frame" BasedOn="{StaticResource CardBase}">
+		<Setter Property="xct:TouchEffect.AnimationEasing" Value="CubicInOut"/>
+		<Setter Property="xct:TouchEffect.PressedOpacity" Value="0.5"/>
+		<Setter Property="xct:TouchEffect.NormalAnimationDuration" Value="250"/>
+		<Setter Property="xct:TouchEffect.PressedAnimationDuration" Value="0"/>
+	</Style>
+
+	<Style x:Key="CardInnerContent" TargetType="StackLayout">
+		<Setter Property="Padding" Value="15"/>
+		<Setter Property="Spacing" Value="0"/>
 	</Style>
 
 	<!--<Style TargetType="ActivityIndicator">

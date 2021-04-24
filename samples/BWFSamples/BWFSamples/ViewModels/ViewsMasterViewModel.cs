@@ -11,19 +11,18 @@ namespace BWFSamples.ViewModels
 {
     public class ViewsMasterViewModel : BaseGalleryViewModel
     {
+        private const string PLACEHOLDER_DESCRIPTION = "{Description goes here}";
+
         private readonly static IEnumerable<ViewDefinitionModel> viewsList = new[]
         {
-            new ViewDefinitionModel(typeof(SymbolImageSourcePage), "Symbol Image Source", "Description Goes Here",
+            new ViewDefinitionModel(typeof(ButtonsPage), "Buttons", PLACEHOLDER_DESCRIPTION),
+            new ViewDefinitionModel(typeof(CardViewPage), "Cards", PLACEHOLDER_DESCRIPTION),
+            new ViewDefinitionModel(typeof(ColorsPage), "Colors", PLACEHOLDER_DESCRIPTION),
+            new ViewDefinitionModel(typeof(SymbolImageSourcePage), "SF Symbols", PLACEHOLDER_DESCRIPTION,
                 conditions:m => BraveWorld.Forms.BraveLibrary.PreviewFeatures.SymbolImageSource,
                 platforms:new[] { Device.iOS, Device.Android }),
-            new ViewDefinitionModel(typeof(ButtonsPage), "Buttons", "Description Goes Here"),
-            new ViewDefinitionModel(typeof(ColorsPage), "Colors", "Description Goes Here")
         };
 
-        protected override IEnumerable<ViewDefinitionModel> CreateItems()
-        {
-            return viewsList;
-            //return viewsList.Where(p => p.IsVisibleWithConditions(p) && p.Platforms.Contains(Device.RuntimePlatform));
-        }
+        protected override IEnumerable<ViewDefinitionModel> CreateItems() => viewsList;
     }
 }

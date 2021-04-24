@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			xmlns:local="clr-namespace:BWFSamples.Pages"
+			xmlns:vm="clr-namespace:BWFSamples.ViewModels.Views"
+			xmlns:model="clr-namespace:BWFSamples.Models"
+			xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+			xmlns:bwf="http://braveworldinc.com/forms"
+			x:Class="BWFSamples.Pages.Views.CardViewPage">
+	<local:BasePage.BindingContext>
+		<vm:CardsViewModel/>
+	</local:BasePage.BindingContext>
+
+	<local:BasePage.Resources>
+		<Style x:Key="CardWithImage" TargetType="Frame" BasedOn="{StaticResource CardBaseInteractable}">
+			<!--
+			<Setter Property="" Value=""/>
+			-->
+		</Style>
+		<Style x:Key="CardTitle" TargetType="Label">
+			<Setter Property="FontSize" Value="22"/>
+		</Style>
+		<Style x:Key="CardSubtitle" TargetType="Label">
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Opacity" Value="0.5"/>
+			<Setter Property="FontAttributes" Value="Bold"/>
+		</Style>
+		<Style x:Key="CardMessage" TargetType="Label">
+			<Setter Property="FontSize" Value="16"/>
+		</Style>
+	</local:BasePage.Resources>
+
+	<local:BasePage.Content>
+		<ScrollView>
+			<StackLayout Padding="10">
+				<Label Text="Welcome to Xamarin.Forms!" />
+
+
+				<Frame Style="{DynamicResource CardWithImage}">
+					<StackLayout Style="{DynamicResource CardInnerContent}">
+						<Label Text="Title" Style="{DynamicResource CardTitle}"/>
+						<Label Text="Subtitle" Style="{DynamicResource CardSubtitle}"/>
+						<Label Text="Message" Style="{DynamicResource CardMessage}"/>
+					</StackLayout>
+				</Frame>
+
+				<Frame Style="{DynamicResource CardWithImage}">
+					<StackLayout>
+						<Image
+							HeightRequest="200"
+							HorizontalOptions="FillAndExpand"
+							Aspect="AspectFill"
+							BackgroundColor="Gray"
+							Source="https://pixabay.com/get/gff071b319c9c2c5db4d1da7917d9bb705c72b24691339de3a8dbe732f06f7320add90f2cd8c122957237a584b29c04cb_1920.jpg"/>
+						<StackLayout Style="{DynamicResource CardInnerContent}">
+							<Label Text="Title" Style="{DynamicResource CardTitle}"/>
+							<Label Text="Subtitle" Style="{DynamicResource CardSubtitle}"/>
+							<Label Text="Message" Style="{DynamicResource CardMessage}"/>
+						</StackLayout>
+					</StackLayout>
+				</Frame>
+			</StackLayout>
+		</ScrollView>
+	</local:BasePage.Content>
+</local:BasePage>
