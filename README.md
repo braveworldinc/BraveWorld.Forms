@@ -1,5 +1,5 @@
 <center>
-<img src="https://raw.githubusercontent.com/braveworldinc/BraveWorld.Forms/main/assets/icon.png" height="100"/>
+<img src="https://raw.githubusercontent.com/braveworldinc/BraveWorld.Forms/main/assets/package-icon.png" height="100"/>
 </center>
 
 <h1>BraveWorld.Forms</h1>
