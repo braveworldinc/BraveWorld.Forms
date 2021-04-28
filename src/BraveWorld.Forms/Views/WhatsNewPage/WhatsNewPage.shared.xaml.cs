@@ -76,18 +76,20 @@ namespace BraveWorld.Forms.Views
             changesCollectionView.ItemsSource = Changes;
         }
 
-        internal void SetInfo(string title, string version, IEnumerable<string> changes, string? icon, string? headerText)
+        internal void SetInfo(string title, string version, IEnumerable<string> changes, string? icon, string? headerText, ImageSource? bannerSource)
         {
             Title = title;
             titleLabel.Text = Title;
             versionLabel.Text = $"Version {version}";
             appIcon.Source = icon ?? "AppIcon";
             changesCollectionView.Header = headerText ?? "What's New";
+            bannerImage.Source = bannerSource ?? null;
+
             SetChanges(changes);
         }
         internal void SetInfo(WhatsNewInfo info)
         {
-            SetInfo(info.Title, info.Version, info.Changes, info.Icon, info.Header);
+            SetInfo(info.Title, info.Version, info.Changes, info.Icon, info.Header, info.BannerSource);
         }
 
 

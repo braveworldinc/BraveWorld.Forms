@@ -91,6 +91,9 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView">
+      <Version>2.3.0.759</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -173,15 +176,10 @@
     <ImageAsset Include="Assets.xcassets\AppIconLarge.imageset\mac-128x128%402x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\silhouette-of-mountains-1323550.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\silhouette-of-mountains-1323550.imageset\pexels-photo-1323550.jpeg">
-      <Visible>false</Visible>
-    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\AppIconLarge.imageset\" />
     <Folder Include="Assets.xcassets\silhouette-of-mountains-1323550.imageset\" />
+    <Folder Include="Assets.xcassets\adult-3086304.imageset\" />
   </ItemGroup>
 </Project>

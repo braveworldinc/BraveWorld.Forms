@@ -15,6 +15,25 @@ namespace BWFSamples.Pages.Views
         public CardViewPage()
         {
             InitializeComponent();
+            UpdateLayout();
+        }
+
+        protected override void OnAppearing()
+        {
+        }
+
+        private void UpdateLayout()
+        {
+            switch (Device.Idiom)
+            {
+                default:
+                case TargetIdiom.Phone:
+                    collectionView.ItemsLayout = new GridItemsLayout(1, ItemsLayoutOrientation.Vertical);
+                    break;
+                case TargetIdiom.Tablet:
+                    collectionView.ItemsLayout = new GridItemsLayout(2, ItemsLayoutOrientation.Vertical);
+                    break;
+            }
         }
     }
 }

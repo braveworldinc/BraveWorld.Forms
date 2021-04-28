@@ -8,29 +8,65 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using BraveWorld.Forms;
 using BraveWorld.Forms.Views;
+using BWFSamples.Models;
+using Xamarin.CommunityToolkit.ObjectModel;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using BWFSamples.Pages;
+using System.Windows.Input;
+using System.Reflection;
 
 namespace BWFSamples
 {
-    public partial class MainPage : BraveWorld.Forms.Views.MasterDetailView
+    public partial class MainPage : MasterDetailView
     {
         private string[] changelog => new[]
         {
-            $"Updated: {BraveLibrary.Name} to {BraveLibrary.Version}",
-            "Added: System Colors Viewer"
+            new ChangeLogEntry(ChangeLogEntryType.Updated, $"{BraveLibrary.Name} to {BraveLibrary.Version}").ToString(),
+            new ChangeLogEntry(ChangeLogEntryType.Updated, "Cards to use PancakeView").ToString()
         };
+
+
+        public Color DetailColor { get; set; }
+
+        public ICommand NavigateCommand { get; }
 
 
         public MainPage()
         {
             InitializeComponent();
 
-            if (VersionTracking.IsFirstLaunchForCurrentBuild)
-                ShowChangelogWindow();
+            viewsMaster.ItemSelected += ViewsMaster_ItemSelected;
+
+
+            ShowChangelogWindow();
+
+            //if (VersionTracking.IsFirstLaunchForCurrentBuild)
+            //    ShowChangelogWindow();
+        }
+
+        private async Task ViewsMaster_ItemSelected(ViewDefinitionModel viewDefinition)
+        {
+            OpenDetail(PreparePage(viewDefinition));
         }
 
         private async Task ShowChangelogWindow()
         {
-            await WhatsNewPage.ShowModal(Navigation, new WhatsNewInfo(BraveLibrary.Name, AppInfo.VersionString, changelog, icon: "AppIconLarge"));
+            await WhatsNewPage.ShowModal(Navigation, new WhatsNewInfo(
+                BraveLibrary.Name,
+                AppInfo.VersionString,
+                changelog,
+                icon: "AppIconLarge",
+                bannerSource: ImageSource.FromResource("BWFSamples.Resources.Images.pexels-photo-1323550.jpeg")
+            ));
+        }
+
+        Xamarin.Forms.Page PreparePage(ViewDefinitionModel model)
+        {
+            var page = (BasePage)Activator.CreateInstance(model.Type);
+            page.Title = model.Title;
+            page.DetailColor = model.Color;
+            return page;
         }
     }
 }

@@ -36,7 +36,7 @@
 
                 
                 <Grid Grid.Row="0" BackgroundColor="{AppThemeBinding Default={StaticResource Gray6}, Dark={StaticResource Gray6Dark}}" VerticalOptions="StartAndExpand">
-                    <Image Source="silhouette-of-mountains-1323550" Aspect="AspectFill" VerticalOptions="FillAndExpand"/>
+                    <Image x:Name="bannerImage" Source="silhouette-of-mountains-1323550" Aspect="AspectFill" VerticalOptions="FillAndExpand"/>
                     <Frame BorderColor="Transparent" HasShadow="False" CornerRadius="0">
                         <Frame.Background>
                             <LinearGradientBrush EndPoint="0,1">

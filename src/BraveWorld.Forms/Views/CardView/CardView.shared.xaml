@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:BraveWorld.Forms.Views"
+    xmlns:bwf="http://braveworldinc.com/forms"
+	Style="{DynamicResource CardBaseInteractable}"
+    x:Class="BraveWorld.Forms.Views.CardView">
+    
+	<StackLayout>
+		<Image
+			x:Name="bannerImage"
+			HeightRequest="200"
+			HorizontalOptions="FillAndExpand"
+			Aspect="AspectFill"
+			BackgroundColor="Gray"
+			Source="silhouette-of-mountains-1323550"/>
+
+		<StackLayout Style="{DynamicResource CardInnerContent}">
+			<Label x:Name="headlineLabel" Style="{DynamicResource CardHeadline}"/>
+			<Label x:Name="titleLabel" Style="{DynamicResource CardTitle}"/>
+			<Label x:Name="messageLabel" Style="{DynamicResource CardMessage}"/>
+		</StackLayout>
+	</StackLayout>
+</Frame>

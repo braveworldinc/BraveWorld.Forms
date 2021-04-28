@@ -58,6 +58,7 @@
     
     <Color x:Key="Foreground">#000</Color>
     <Color x:Key="ForegroundDark">#fff</Color>
+
     <Color x:Key="Background">#fff</Color>
     <Color x:Key="BackgroundDark">#000</Color>
 

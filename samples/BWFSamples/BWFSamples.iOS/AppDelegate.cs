@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamarin.Forms.PancakeView.iOS;
 
 namespace BWFSamples.iOS
 {
@@ -24,6 +25,9 @@ namespace BWFSamples.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             BraveWorld.Forms.BraveLibrary.Init();
+
+            //PancakeViewRenderer.Init();
+
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }

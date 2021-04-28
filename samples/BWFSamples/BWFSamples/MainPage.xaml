@@ -6,11 +6,11 @@
             xmlns:pages="clr-namespace:BWFSamples.Pages.Views"
             x:Class="BWFSamples.MainPage">
     <bwf:MasterDetailView.Master>
-        <pages:ViewsMasterPage/>
+        <pages:ViewsMasterPage x:Name="viewsMaster"/>
     </bwf:MasterDetailView.Master>
     <bwf:MasterDetailView.DefaultDetailsView>
         <ContentView NavigationPage.HasNavigationBar="False">
-            <Label Text="No Project Selected" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Opacity="0.3"/>
+            <Label Text="Nothing Selected" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Opacity="0.3"/>
         </ContentView>
     </bwf:MasterDetailView.DefaultDetailsView>
 </bwf:MasterDetailView>

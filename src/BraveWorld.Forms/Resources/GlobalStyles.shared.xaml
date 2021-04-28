@@ -6,7 +6,8 @@
 			xmlns:classes="clr-namespace:BraveWorld.Forms.Classes"
 			xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
 			xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-			xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core">
+			xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+			xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
 	<ResourceDictionary.MergedDictionaries>
 		<local:ThemeColors/>
@@ -15,16 +16,26 @@
 	<Color x:Key="Primary">#007bff</Color>
 	<Color x:Key="PrimaryDark">#0a84ff</Color>
 
+    <!--<Color x:Key="Background">#e5e5ea</Color>
+    <Color x:Key="BackgroundDark">#000</Color>-->
+
 	<x:Int32 x:Key="RoundedCornersRadius">10</x:Int32>
 
 
-	<Style TargetType="Page">
+	<Style TargetType="Page" ApplyToDerivedTypes="True">
 		<Setter Property="ios:Page.LargeTitleDisplay" Value="Never"/>
 		<Setter Property="ios:Page.UseSafeArea" Value="True"/>
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Background}, Dark={StaticResource BackgroundDark}}"/>
 	</Style>
 	<Style TargetType="Page" Class="Master">
 		<Setter Property="ios:Page.LargeTitleDisplay" Value="Never"/>
 	</Style>
+	
+	<Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Background}, Dark={StaticResource BackgroundDark}}"/>
+		<Setter Property="ios:Page.UseSafeArea" Value="True"/>
+	</Style>
+
 
 	<Style TargetType="TabbedPage">
 		<Setter Property="ios:TabbedPage.TranslucencyMode" Value="Translucent"/>
@@ -33,11 +44,10 @@
 
 	<Style TargetType="NavigationPage">
 		<Setter Property="ios:NavigationPage.IsNavigationBarTranslucent" Value="True"/>
-		<Setter Property="ios:NavigationPage.PrefersLargeTitles" Value="True"/>
-		<Setter Property="BarTextColor" Value="Red"/>
+		<Setter Property="BarTextColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+		<Setter Property="ios:NavigationPage.HideNavigationBarSeparator" Value="False"/>
 		<!--<Setter Property="BarBackgroundColor" Value="Red"/>-->
 		<!--<Setter Property="NavigationPage.BarBackgroundColor" Value="#00000000"/>-->
-		<Setter Property="ios:NavigationPage.HideNavigationBarSeparator" Value="False"/>
 	</Style>
 
 	<Style TargetType="ContentPage" Class="Transparent">
@@ -50,7 +60,11 @@
 
 
 	<Style TargetType="ListView">
-		<Setter Property="SelectionMode" Value="None"/>
+		<Setter Property="SelectionMode">
+			<Setter.Value>
+				<OnIdiom x:TypeArguments="SelectionMode" Phone="None" Tablet="Single" Desktop="Single"/>
+			</Setter.Value>
+		</Setter>
 		<Setter Property="ios:ListView.RowAnimationsEnabled" Value="True"/>
 	</Style>
 
@@ -111,7 +125,7 @@
 
 	<Style x:Key="ButtonFilledGlow" TargetType="Button" BasedOn="{StaticResource ButtonGlowBase}">
 		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
-		<Setter Property="TextColor" Value="{DynamicResource ForegroundDark}"/>
+		<Setter Property="TextColor" Value="{StaticResource ForegroundDark}"/>
 		<Setter Property="BorderColor" Value="{AppThemeBinding Default={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 		<Setter Property="BorderWidth" Value="1"/>
 	</Style>
@@ -136,31 +150,79 @@
 
 	<Style x:Key="CardBase" TargetType="Frame">
 		<Setter Property="CornerRadius" Value="15"/>
-		<Setter Property="Margin" Value="10"/>
+		<Setter Property="Margin" Value="0"/>
 		<Setter Property="IsClippedToBounds" Value="True"/>
-		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default={DynamicResource Background}, Dark={DynamicResource BackgroundDark}}"/>
-
-		<!--
-			<Setter Property="HasShadow" Value="True"/>
-			<Setter Property="xct:ShadowEffect.Radius" Value="3"/>
-			<Setter Property="xct:ShadowEffect.Color" Value="Black"/>
-			<Setter Property="xct:ShadowEffect.OffsetY" Value="2"/>
-			<Setter Property="xct:ShadowEffect.Opacity" Value="0.3"/>
-		-->
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default=White, Dark={StaticResource Gray6Dark}}"/>
+		<Setter Property="HasShadow" Value="False"/>
 	</Style>
 
 	<Style x:Key="CardBaseInteractable" TargetType="Frame" BasedOn="{StaticResource CardBase}">
 		<Setter Property="xct:TouchEffect.AnimationEasing" Value="CubicInOut"/>
-		<Setter Property="xct:TouchEffect.PressedOpacity" Value="0.5"/>
+		<Setter Property="xct:TouchEffect.PressedOpacity" Value="1"/>
 		<Setter Property="xct:TouchEffect.NormalAnimationDuration" Value="250"/>
-		<Setter Property="xct:TouchEffect.PressedAnimationDuration" Value="0"/>
+		<Setter Property="xct:TouchEffect.PressedAnimationDuration" Value="250"/>
+		<Setter Property="xct:TouchEffect.PressedScale" Value="0.95"/>
 	</Style>
+	
+	<Style x:Key="CardShadow" TargetType="yummy:PancakeView">
+		<Setter Property="Margin" Value="10"/>
+		<Setter Property="IsClippedToBounds" Value="False"/>
+		<Setter Property="Shadow">
+			<Setter.Value>
+				<yummy:DropShadow Color="#88000000" Offset="0,15" BlurRadius="15" Opacity="0.3"/>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="CardShadowInteractable" TargetType="yummy:PancakeView" BasedOn="{StaticResource CardShadow}">
+		<Setter Property="xct:TouchEffect.AnimationEasing" Value="CubicInOut"/>
+		<Setter Property="xct:TouchEffect.PressedOpacity" Value="1"/>
+		<Setter Property="xct:TouchEffect.NormalAnimationDuration" Value="250"/>
+		<Setter Property="xct:TouchEffect.PressedAnimationDuration" Value="250"/>
+		<Setter Property="xct:TouchEffect.PressedScale" Value="0.95"/>
+	</Style>
+	
+	<Style x:Key="YummyCardBase" TargetType="yummy:PancakeView">
+		<Setter Property="CornerRadius" Value="15"/>
+		<Setter Property="Margin" Value="10"/>
+		<Setter Property="IsClippedToBounds" Value="False"/>
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Default=White, Dark={StaticResource Gray6Dark}}"/>
+		<Setter Property="Shadow">
+			<Setter.Value>
+				<yummy:DropShadow Color="#88000000" Offset="0,15" BlurRadius="15" Opacity="0.3"/>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="YummyCardBaseInteractable" TargetType="yummy:PancakeView" BasedOn="{StaticResource YummyCardBase}">
+		<Setter Property="xct:TouchEffect.AnimationEasing" Value="CubicInOut"/>
+		<Setter Property="xct:TouchEffect.PressedOpacity" Value="1"/>
+		<Setter Property="xct:TouchEffect.NormalAnimationDuration" Value="250"/>
+		<Setter Property="xct:TouchEffect.PressedAnimationDuration" Value="250"/>
+		<Setter Property="xct:TouchEffect.PressedScale" Value="0.95"/>
+	</Style>
+
 
 	<Style x:Key="CardInnerContent" TargetType="StackLayout">
-		<Setter Property="Padding" Value="15"/>
+		<Setter Property="Padding" Value="20"/>
 		<Setter Property="Spacing" Value="0"/>
 	</Style>
-
+	
+	<Style x:Key="CardTitle" TargetType="Label">
+		<Setter Property="FontSize" Value="26"/>
+		<Setter Property="FontAttributes" Value="Bold"/>
+		<Setter Property="Margin" Value="0,0,0,5"/>
+	</Style>
+	<Style x:Key="CardHeadline" TargetType="Label">
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Opacity" Value="0.5"/>
+		<Setter Property="FontAttributes" Value="Bold"/>
+		<Setter Property="TextTransform" Value="Uppercase"/>
+		<Setter Property="Margin" Value="0,0,0,5"/>
+	</Style>
+	<Style x:Key="CardMessage" TargetType="Label">
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Opacity" Value="0.5"/>
+	</Style>
 	<!--<Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{DynamicResource Primary}"/>
     </Style>-->

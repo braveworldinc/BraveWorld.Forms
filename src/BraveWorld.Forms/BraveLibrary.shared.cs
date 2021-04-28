@@ -22,7 +22,11 @@ namespace BraveWorld.Forms
         public static void Init()
         {
 #if XAMARIN_IOS
+            Xamarin.Forms.PancakeView.iOS.PancakeViewRenderer.Init();
+
             Xamarin.Forms.Internals.Registrar.Registered.Register(typeof(Views.SymbolImageSource), typeof(Views.SymbolImageSourceHandler));
+#elif MONOANDROID
+            Xamarin.Forms.PancakeView.Droid.PancakeViewRenderer.Init();
 #endif
         }
 

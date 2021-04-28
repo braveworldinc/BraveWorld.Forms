@@ -107,7 +107,7 @@ namespace BraveWorld.Forms.Views
         {
             base.OnAppearing();
 
-            NavigationPage.SetHasNavigationBar(this, false);
+            SetHasNavigationBar(this, false);
             Xamarin.Forms.PlatformConfiguration.iOSSpecific.NavigationPage.SetPrefersLargeTitles(Master, true);
         }
 
@@ -122,7 +122,7 @@ namespace BraveWorld.Forms.Views
                 _detailNavigation.Title = "Detail";
 
                 flyout = new FlyoutPage();
-                NavigationPage.SetHasNavigationBar(flyout, false);
+                SetHasNavigationBar(flyout, false);
 
                 flyout.Flyout = _masterNavigation;
                 flyout.Detail = _detailNavigation;

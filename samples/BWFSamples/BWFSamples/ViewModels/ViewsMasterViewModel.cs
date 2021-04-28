@@ -15,10 +15,10 @@ namespace BWFSamples.ViewModels
 
         private readonly static IEnumerable<ViewDefinitionModel> viewsList = new[]
         {
-            new ViewDefinitionModel(typeof(ButtonsPage), "Buttons", PLACEHOLDER_DESCRIPTION),
-            new ViewDefinitionModel(typeof(CardViewPage), "Cards", PLACEHOLDER_DESCRIPTION),
-            new ViewDefinitionModel(typeof(ColorsPage), "Colors", PLACEHOLDER_DESCRIPTION),
-            new ViewDefinitionModel(typeof(SymbolImageSourcePage), "SF Symbols", PLACEHOLDER_DESCRIPTION,
+            new ViewDefinitionModel(typeof(ButtonsPage), "Buttons", "It's a button...what more do you want from me?"),
+            new ViewDefinitionModel(typeof(CardViewPage), "Cards", "More than a button!"),
+            new ViewDefinitionModel(typeof(ColorsPage), "Colors", "All the colors a part of this library."),
+            new ViewDefinitionModel(typeof(SymbolImageSourcePage), "Symbols", "Apple's SF Symbols as an ImageSource.",
                 conditions:m => BraveWorld.Forms.BraveLibrary.PreviewFeatures.SymbolImageSource,
                 platforms:new[] { Device.iOS, Device.Android }),
         };
