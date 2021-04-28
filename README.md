@@ -13,9 +13,9 @@ A cross-platform library to aggregate common tasks into a single library.
 
 - [x] Inheritable Base Model
 - [x] Inheritable Base Data Service
-- [ ] Collapsable Master/Detail SplitView
-- [ ] Dynamic App Theme Colors
-- [ ] Global Styles
+- [x] Collapsable Master/Detail SplitView
+- [x] Dynamic App Theme Colors
+- [x] Global Styles
 
 ### Components
 |                         | iOS | Android | UWP |
@@ -30,3 +30,4 @@ A cross-platform library to aggregate common tasks into a single library.
 - [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms)
 - [Xamarin.Essentials](https://github.com/xamarin/Essentials)
 - [Xamarin.CommunityToolkit](https://github.com/xamarin/XamarinCommunityToolkit)
+- [PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView)
