@@ -14,14 +14,16 @@ A cross-platform library to aggregate common tasks into a single library.
 - [x] Inheritable Base Model
 - [x] Inheritable Base Data Service
 - [x] Collapsable Master/Detail SplitView
-- [x] Dynamic App Theme Colors
 - [x] Global Styles
+- [ ] Customizable "What's New" Modal Page
+- [ ] Card View
 
 ### Components
-|                         | iOS | Android | UWP |
-| :---------------------: | :-: | :-----: | :-: |
-| [Master/Detail SplitView](https://github.com/braveworldinc/BraveWorld.Forms/blob/main/src/BraveWorld.Forms/Views/MasterDetailView.shared.cs) | Y | N/A | N/A |
-| [SFSymbol Image Source](https://github.com/braveworldinc/BraveWorld.Forms/blob/main/src/BraveWorld.Forms/Views/SymbolImageSource/SymbolImageSource.shared.cs) | Y | N/A | N/A |
+|                         | iOS | Android |
+| :---------------------: | :-: | :-----: |
+| [Master/Detail SplitView](https://github.com/braveworldinc/BraveWorld.Forms/blob/main/src/BraveWorld.Forms/Views/MasterDetailView.shared.cs) | Y | Y |
+| [Symbol Image Source](https://github.com/braveworldinc/BraveWorld.Forms/blob/main/src/BraveWorld.Forms/Views/SymbolImageSource/SymbolImageSource.shared.cs) | Y | N/A |
+| [What's New Modal](https://github.com/braveworldinc/BraveWorld.Forms/tree/main/src/BraveWorld.Forms/Views/WhatsNewPage) | Y | Y |
 
 \* *N/A: Not Tested*
 
@@ -30,4 +32,4 @@ A cross-platform library to aggregate common tasks into a single library.
 - [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms)
 - [Xamarin.Essentials](https://github.com/xamarin/Essentials)
 - [Xamarin.CommunityToolkit](https://github.com/xamarin/XamarinCommunityToolkit)
-- [PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView)
+- [Xamarin.Forms.PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView)
