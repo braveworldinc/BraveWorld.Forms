@@ -59,10 +59,13 @@
 	</Style>
 
 
-	<Style TargetType="ListView">
+	<Style TargetType="ListView" ApplyToDerivedTypes="True">
 		<Setter Property="SelectionMode">
 			<Setter.Value>
-				<OnIdiom x:TypeArguments="SelectionMode" Phone="None" Tablet="Single" Desktop="Single"/>
+				<OnIdiom x:TypeArguments="ListViewSelectionMode">
+					<OnIdiom.Phone>None</OnIdiom.Phone>
+					<OnIdiom.Tablet>Single</OnIdiom.Tablet>
+				</OnIdiom>
 			</Setter.Value>
 		</Setter>
 		<Setter Property="ios:ListView.RowAnimationsEnabled" Value="True"/>
