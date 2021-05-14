@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:BraveWorld.Forms.Views"
+    xmlns:bwf="http://braveworldinc.com/forms"
+	xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+	xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
+	x:DataType="local:CardViewBase"
+    x:Class="BraveWorld.Forms.Views.CardViewBase"
+	x:Name="rootElement"
+	Margin="10,0,10,10">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<xct:IsNotNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter" />
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<ContentView.ControlTemplate>
+		<ControlTemplate>
+			<yummy:PancakeView
+				x:Name="pancakeView"
+				Style="{DynamicResource YummyCardBaseInteractable}"
+				xct:TouchEffect.Command="{Binding Command}">
+				<!--<yummy:PancakeView.Shadow>
+					<yummy:DropShadow Color="{Binding CardColor}" Offset="0,15" BlurRadius="15" Opacity="0.1"/>
+				</yummy:PancakeView.Shadow>-->
+
+				<Frame x:Name="cardFrame" Style="{DynamicResource CardBase}" BackgroundColor="{AppThemeBinding Default=White, Dark={StaticResource Gray6Dark}}">
+					<StackLayout>
+						<ContentPresenter
+							InputTransparent="True"
+							CascadeInputTransparent="True"
+							IsClippedToBounds="True"/>
+					</StackLayout>
+				</Frame>
+			</yummy:PancakeView>
+		</ControlTemplate>
+	</ContentView.ControlTemplate>
+</ContentView>

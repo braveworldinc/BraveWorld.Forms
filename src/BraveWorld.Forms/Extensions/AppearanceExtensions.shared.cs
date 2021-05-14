@@ -25,10 +25,14 @@ namespace BraveWorld.Forms.Extensions
         }
 
         public static double Interpolate(double d1, double d2, double fraction)
-        {
-            return d1 + (d2 - d1) * fraction;
-        }
+            => d1 + (d2 - d1) * fraction;
 
 
+        public static Color WithAlpha(this Color color, double alpha)
+            => Color.FromRgba(color.R, color.G, color.B, alpha);
+
+
+        public static bool IsDarkColor(this Color color) => color.Luminosity <= 0.5;
+        public static bool IsLightColor(this Color color) => !color.IsDarkColor();
     }
 }

@@ -9,53 +9,47 @@
 	xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
 	x:DataType="local:CardView"
     x:Class="BraveWorld.Forms.Views.CardView"
-	Padding="10,25">
+	x:Name="rootElement"
+	Margin="10,0,10,10">
 	<Grid.Resources>
 		<ResourceDictionary>
 			<xct:IsNotNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter" />
 		</ResourceDictionary>
 	</Grid.Resources>
-	<yummy:PancakeView Style="{DynamicResource YummyCardBaseInteractable}" xct:TouchEffect.Command="{Binding CardTapCommand}">
-		<Frame Style="{DynamicResource CardBase}">
+	<yummy:PancakeView
+		x:Name="pancakeView"
+		Style="{DynamicResource YummyCardBaseInteractable}"
+		xct:TouchEffect.Command="{Binding Command}">
+		<!--<yummy:PancakeView.Shadow>
+			<yummy:DropShadow Color="{Binding CardColor}" Offset="0,15" BlurRadius="15" Opacity="0.1"/>
+		</yummy:PancakeView.Shadow>-->
+
+		<Frame x:Name="cardFrame" Style="{DynamicResource CardBase}">
 			<StackLayout>
 				<Image
 					x:Name="cardImage"
 					HorizontalOptions="FillAndExpand"
 					Aspect="AspectFill"
-					BackgroundColor="Transparent"
-					/>
-				<!--
-					Source="{Binding BannerImage}"
-					IsVisible="{Binding BannerImage, Converter={StaticResource IsNotNullOrEmptyConverter}}"
-					HeightRequest="250"
-				-->
+					BackgroundColor="Transparent"/>
 
 				<StackLayout Style="{DynamicResource CardInnerContent}">
 					<Label
 						x:Name="cardHeadline"
 						Style="{DynamicResource CardHeadline}"
 						Text="{Binding Headline}"
-						TextColor="{Binding ForegroundColor}"
 						IsVisible="{Binding Headline, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
 
 					<Label
 						x:Name="cardTitle"
 						Style="{DynamicResource CardTitle}"
 						Text="{Binding Title}"
-						TextColor="{Binding ForegroundColor}"
 						IsVisible="{Binding Title, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
 
 					<Label
 						x:Name="cardMessage"
 						Style="{DynamicResource CardMessage}"
 						Text="{Binding Message}"
-						TextColor="{Binding ForegroundColor}"
 						IsVisible="{Binding Message, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
-
-					<ContentPresenter
-						InputTransparent="True"
-						CascadeInputTransparent="True"
-						IsClippedToBounds="True"/>
 				</StackLayout>
 			</StackLayout>
 		</Frame>

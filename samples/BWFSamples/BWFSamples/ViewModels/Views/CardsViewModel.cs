@@ -5,6 +5,8 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using BraveWorld.Forms.Classes;
 using System.Collections.ObjectModel;
+using BraveWorld.Forms;
+using BraveWorld.Forms.Extensions;
 
 namespace BWFSamples.ViewModels.Views
 {
@@ -14,16 +16,15 @@ namespace BWFSamples.ViewModels.Views
         {
             new CardDefinition
             {
-                Title = "This is a card",
+                Title = "This is Blue",
                 Message = "Message goes here",
-                BackgroundColor = Color.FromHex("$007aff")
+                CardColor = SystemColors.Blue.LightColor.WithAlpha(0.5)
             },
             new CardDefinition
             {
-                Title = "This is a card",
-                Headline = "This is the headline",
-                Message = "Message goes here",
-                BackgroundColor = Color.FromHex("$007aff")
+                Title = "This isn't a color",
+                Headline = "Headline",
+                Message = "Message goes here"
             },
             new CardDefinition
             {
@@ -44,36 +45,25 @@ namespace BWFSamples.ViewModels.Views
                 CardTapCommand = new Command(() => {
                     Console.WriteLine("Card Tapped!");
                 })
-            },
-            new CardDefinition
-            {
-                Title = "This is a card",
-                Headline = "Headline",
-                Message = "Message goes here"
-            },
+            }
         };
 
-        public ICommand CardTapCommand { get; }
 
         public CardsViewModel()
         {
-            CardTapCommand = new Command(() =>
-            {
-                Console.WriteLine("Card Tapped!");
-            });
+
         }
     }
 
-    public struct CardDefinition
+    public class CardDefinition
     {
-        public string Title { get; set; }
-        public string Headline { get; set; }
-        public string Message { get; set; }
-        public ImageSource Image { get; set; }
-        public Color? TextColor { get; set; }
-        public Color? BackgroundColor { get; set; }
-        public ICommand CardTapCommand { get; set; }
-
-        public bool HasImage => Image != null;
+        public string Title { get; set; } = string.Empty;
+        public string Headline { get; set; } = string.Empty;
+        public string Message { get; set; } = string.Empty;
+        public string StyleClass { get; set; } = string.Empty;
+        public ImageSource Image { get; set; } = null;
+        public Color? TextColor { get; set; } = null;
+        public Color? CardColor { get; set; } = null;
+        public ICommand CardTapCommand { get; set; } = null;
     }
 }

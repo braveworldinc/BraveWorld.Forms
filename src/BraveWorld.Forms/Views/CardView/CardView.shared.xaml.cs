@@ -6,6 +6,7 @@ using BraveWorld.Forms.Classes;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms.PancakeView;
+using BraveWorld.Forms.Extensions;
 
 namespace BraveWorld.Forms.Views
 {
@@ -37,6 +38,32 @@ namespace BraveWorld.Forms.Views
         {
             get => (Color)GetValue(TintColorProperty);
             set => SetValue(TintColorProperty, value);
+        }
+
+        public static readonly BindableProperty CardBackgroundColorProperty = BindableProperty.Create(
+            propertyName: nameof(CardBackgroundColor),
+            returnType: typeof(Color?),
+            declaringType: typeof(CardView),
+            defaultValue: null
+        );
+
+        public Color? CardBackgroundColor
+        {
+            get => (Color?)GetValue(CardBackgroundColorProperty);
+            set => SetValue(CardBackgroundColorProperty, value);
+        }
+
+        public static readonly BindableProperty ShadowColorProperty = BindableProperty.Create(
+            propertyName: nameof(ShadowColor),
+            returnType: typeof(Color?),
+            declaringType: typeof(CardView),
+            defaultValue: null
+        );
+
+        public Color? ShadowColor
+        {
+            get => (Color?)GetValue(ShadowColorProperty);
+            set => SetValue(ShadowColorProperty, value);
         }
 
 
@@ -122,26 +149,6 @@ namespace BraveWorld.Forms.Views
         }
 
 
-        //public enum ECardStyle
-        //{
-        //    Default,
-        //    Image
-        //}
-
-        //public static readonly BindableProperty CardStyleProperty = BindableProperty.Create(
-        //    propertyName: nameof(CardStyle),
-        //    returnType: typeof(ECardStyle),
-        //    declaringType: typeof(CardView),
-        //    defaultValue: ECardStyle.Default
-        //);
-
-        //public ECardStyle CardStyle
-        //{
-        //    get => (ECardStyle)GetValue(CardStyleProperty);
-        //    set => SetValue(CardStyleProperty, value);
-        //}
-
-
         #endregion
 
         public CardView()
@@ -156,18 +163,19 @@ namespace BraveWorld.Forms.Views
             if (propertyName == BannerImageProperty.PropertyName)
                 SetBannerImage(BannerImage);
 
-            if (propertyName == ForegroundColorProperty.PropertyName)
-                UpdateForegroundColor(ForegroundColor);
+            if (propertyName == CardBackgroundColorProperty.PropertyName)
+                SetCardBackgroundColor(CardBackgroundColor);
+            
+            
+            //if(propertyName == BackgroundColorProperty.PropertyName || propertyName == ForegroundColorProperty.PropertyName || propertyName == CardBackgroundColorProperty.PropertyName)
+            //    UpdateForegroundColor();
 
 
-            //if (propertyName == TitleProperty.PropertyName)
-            //    SetLabelTextAndVisibility(cardTitle, Title);
+            //if (propertyName == ForegroundColorProperty.PropertyName)
+            //    SetForegroundColor(ForegroundColor);
 
-            //if (propertyName == HeadlineProperty.PropertyName)
-            //    SetLabelTextAndVisibility(cardHeadline, Headline);
-
-            //if (propertyName == MessageProperty.PropertyName)
-            //    SetLabelTextAndVisibility(cardMessage, Message);
+            //if (propertyName == ShadowColorProperty.PropertyName)
+            //    SetShadowColor(ShadowColor);
         }
 
 
@@ -180,6 +188,16 @@ namespace BraveWorld.Forms.Views
             label.IsVisible = _hasText;
         }
 
+        private void SetCardBackgroundColor(Color? color)
+        {
+            if(color != null)
+            {
+                pancakeView.BackgroundColor = color.Value;
+                cardFrame.BackgroundColor = color.Value;
+            }
+
+            SetShadowColor(color);
+        }
 
         private void SetBannerImage(ImageSource source)
         {
@@ -195,12 +213,43 @@ namespace BraveWorld.Forms.Views
             cardImage.Opacity = isVisible ? 1 : 0;
         }
 
-        private void UpdateForegroundColor(Color? color = null)
+        private void UpdateForegroundColor()
         {
-            var _foregroundColor = color ?? ForegroundColor;
-            cardTitle.TextColor = _foregroundColor;
-            cardHeadline.TextColor = _foregroundColor;
-            cardMessage.TextColor = _foregroundColor;
+            if(CardBackgroundColor != null)
+            {
+                Color _foregroundColor = CardBackgroundColor.Value.IsDarkColor() ? Color.White : Color.Black;
+
+                //if (ShadowColor != null)
+                //    _foregroundColor = pancakeView.BackgroundColor.IsDarkColor() ? Color.White : Color.Black;
+
+                cardTitle.TextColor = _foregroundColor;
+                cardHeadline.TextColor = _foregroundColor;
+                cardMessage.TextColor = _foregroundColor;
+            }
+        }
+
+        private void SetShadowColor(Color? color = null)
+        {
+            if(color != null)
+            {
+                pancakeView.Shadow = CreateShadow(color.Value.WithAlpha(1), 0.3f);
+            } else
+            {
+                pancakeView.Shadow = CreateShadow(Color.Black);
+            }
+        }
+
+        private DropShadow CreateShadow(Color color, float opacity = 0.1f)
+        {
+            //<yummy:DropShadow Color="#88000000" Offset="0,15" BlurRadius="15" Opacity="0.3"/>
+            
+            return new DropShadow()
+            {
+                Color = color,
+                Offset = new Point(0, 15),
+                BlurRadius = 15,
+                Opacity = opacity
+            };
         }
 
         //private void UpdateStyling()
