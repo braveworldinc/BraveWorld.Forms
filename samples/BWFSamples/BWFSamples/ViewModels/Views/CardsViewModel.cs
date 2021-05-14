@@ -15,7 +15,13 @@ namespace BWFSamples.ViewModels.Views
             new CardDefinition
             {
                 Title = "This is a card",
-                Headline = "Headline",
+                Message = "Message goes here",
+                BackgroundColor = Color.FromHex("$007aff")
+            },
+            new CardDefinition
+            {
+                Title = "This is a card",
+                Headline = "This is the headline",
                 Message = "Message goes here",
                 BackgroundColor = Color.FromHex("$007aff")
             },
@@ -51,7 +57,8 @@ namespace BWFSamples.ViewModels.Views
 
         public CardsViewModel()
         {
-            CardTapCommand = new Command(() => {
+            CardTapCommand = new Command(() =>
+            {
                 Console.WriteLine("Card Tapped!");
             });
         }

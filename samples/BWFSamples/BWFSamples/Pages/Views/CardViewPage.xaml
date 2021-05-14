@@ -8,6 +8,7 @@
 			xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
 			xmlns:bwf="http://braveworldinc.com/forms"
 			xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+			BackgroundColor="{AppThemeBinding Default={StaticResource BackgroundCards}, Dark={StaticResource BackgroundCardsDark}}"
 			x:Class="BWFSamples.Pages.Views.CardViewPage">
 	<local:BasePage.BindingContext>
 		<vm:CardsViewModel/>
@@ -17,26 +18,40 @@
 		<CollectionView x:Name="collectionView" ItemsSource="{Binding Cards}" ItemsLayout="VerticalGrid,1">
 			<CollectionView.ItemTemplate>
 				<DataTemplate x:DataType="vm:CardDefinition">
-					<Grid Padding="10,25">
-						<yummy:PancakeView Style="{DynamicResource CardShadowInteractable}" xct:TouchEffect.Command="{Binding CardTapCommand}">
-							<Frame Style="{DynamicResource CardBase}">
-								<StackLayout>
-									<Image
+					<StackLayout>
+						<bwf:CardView
+							Headline="{Binding Headline}"
+							Title="{Binding Title}"
+							Message="{Binding Message}"
+							Command="{Binding CardTapCommand}"
+							BannerImage="{Binding Image}"
+							IsBusy="True"
+							ForegroundColor="{AppThemeBinding Default={StaticResource Foreground}, Dark={StaticResource ForegroundDark}}"/>
+
+
+						<!--
+						<Grid Padding="10,25">
+							<yummy:PancakeView Style="{DynamicResource CardShadowInteractable}" xct:TouchEffect.Command="{Binding CardTapCommand}">
+								<Frame Style="{DynamicResource CardBase}">
+									<StackLayout>
+										<Image
 										HeightRequest="250"
 										HorizontalOptions="FillAndExpand"
 										Aspect="AspectFill"
 										BackgroundColor="Gray"
 										Source="{Binding Image}"
 										IsVisible="{Binding HasImage}"/>
-									<StackLayout Style="{DynamicResource CardInnerContent}">
-										<Label Text="{Binding Headline}" Style="{DynamicResource CardHeadline}"/>
-										<Label Text="{Binding Title}" Style="{DynamicResource CardTitle}"/>
-										<Label Text="{Binding Message}" Style="{DynamicResource CardMessage}"/>
+										<StackLayout Style="{DynamicResource CardInnerContent}">
+											<Label Text="{Binding Headline}" Style="{DynamicResource CardHeadline}"/>
+											<Label Text="{Binding Title}" Style="{DynamicResource CardTitle}"/>
+											<Label Text="{Binding Message}" Style="{DynamicResource CardMessage}"/>
+										</StackLayout>
 									</StackLayout>
-								</StackLayout>
-							</Frame>
-						</yummy:PancakeView>
-					</Grid>
+								</Frame>
+							</yummy:PancakeView>
+						</Grid>
+						-->
+					</StackLayout>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
 		</CollectionView>

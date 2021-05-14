@@ -1,25 +1,63 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Frame
+<Grid
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:local="clr-namespace:BraveWorld.Forms.Views"
     xmlns:bwf="http://braveworldinc.com/forms"
-	Style="{DynamicResource CardBaseInteractable}"
-    x:Class="BraveWorld.Forms.Views.CardView">
-    
-	<StackLayout>
-		<Image
-			x:Name="bannerImage"
-			HeightRequest="200"
-			HorizontalOptions="FillAndExpand"
-			Aspect="AspectFill"
-			BackgroundColor="Gray"
-			Source="silhouette-of-mountains-1323550"/>
+	xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+	xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
+	x:DataType="local:CardView"
+    x:Class="BraveWorld.Forms.Views.CardView"
+	Padding="10,25">
+	<Grid.Resources>
+		<ResourceDictionary>
+			<xct:IsNotNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter" />
+		</ResourceDictionary>
+	</Grid.Resources>
+	<yummy:PancakeView Style="{DynamicResource YummyCardBaseInteractable}" xct:TouchEffect.Command="{Binding CardTapCommand}">
+		<Frame Style="{DynamicResource CardBase}">
+			<StackLayout>
+				<Image
+					x:Name="cardImage"
+					HorizontalOptions="FillAndExpand"
+					Aspect="AspectFill"
+					BackgroundColor="Transparent"
+					/>
+				<!--
+					Source="{Binding BannerImage}"
+					IsVisible="{Binding BannerImage, Converter={StaticResource IsNotNullOrEmptyConverter}}"
+					HeightRequest="250"
+				-->
 
-		<StackLayout Style="{DynamicResource CardInnerContent}">
-			<Label x:Name="headlineLabel" Style="{DynamicResource CardHeadline}"/>
-			<Label x:Name="titleLabel" Style="{DynamicResource CardTitle}"/>
-			<Label x:Name="messageLabel" Style="{DynamicResource CardMessage}"/>
-		</StackLayout>
-	</StackLayout>
-</Frame>
+				<StackLayout Style="{DynamicResource CardInnerContent}">
+					<Label
+						x:Name="cardHeadline"
+						Style="{DynamicResource CardHeadline}"
+						Text="{Binding Headline}"
+						TextColor="{Binding ForegroundColor}"
+						IsVisible="{Binding Headline, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
+
+					<Label
+						x:Name="cardTitle"
+						Style="{DynamicResource CardTitle}"
+						Text="{Binding Title}"
+						TextColor="{Binding ForegroundColor}"
+						IsVisible="{Binding Title, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
+
+					<Label
+						x:Name="cardMessage"
+						Style="{DynamicResource CardMessage}"
+						Text="{Binding Message}"
+						TextColor="{Binding ForegroundColor}"
+						IsVisible="{Binding Message, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
+
+					<ContentPresenter
+						InputTransparent="True"
+						CascadeInputTransparent="True"
+						IsClippedToBounds="True"/>
+				</StackLayout>
+			</StackLayout>
+		</Frame>
+	</yummy:PancakeView>
+</Grid>

@@ -99,6 +99,7 @@
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Xamarin.Forms.Skeleton" Version="2.0.0" />
 
     <Folder Include="build\" />
     <Folder Include="AssemblyInfo\" />

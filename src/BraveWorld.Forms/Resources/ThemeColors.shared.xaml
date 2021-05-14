@@ -4,66 +4,69 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:classes="clr-namespace:BraveWorld.Forms.Classes"
     x:Class="BraveWorld.Forms.Resources.ThemeColors">
-    
-    <Color x:Key="Red">#ff3b30</Color>
-    <Color x:Key="RedDark">#ff453a</Color>
-    
-    <Color x:Key="Orange">#ff9500</Color>
-    <Color x:Key="OrangeDark">#ff9d0a</Color>
-    
-    <Color x:Key="Yellow">#ffcc00</Color>
-    <Color x:Key="YellowDark">#ffd60a</Color>
-    
-    <Color x:Key="Green">#34c759</Color>
-    <Color x:Key="GreenDark">#30d158</Color>
-    
-    <Color x:Key="Teal">#5ac8fa</Color>
-    <Color x:Key="TealDark">#64d3ff</Color>
-    
-    <Color x:Key="Blue">#007bff</Color>
-    <Color x:Key="BlueDark">#0a84ff</Color>
-    
-    <Color x:Key="Indigo">#5856d6</Color>
-    <Color x:Key="IndigoDark">#5e5ce6</Color>
-    
-    <Color x:Key="Purple">#af52de</Color>
-    <Color x:Key="PurpleDark">#bf5af2</Color>
-    
-    <Color x:Key="Pink">#ff2d54</Color>
-    <Color x:Key="PinkDark">#ff375f</Color>
+
+	<Color x:Key="Red">#ff3b30</Color>
+	<Color x:Key="RedDark">#ff453a</Color>
+
+	<Color x:Key="Orange">#ff9500</Color>
+	<Color x:Key="OrangeDark">#ff9d0a</Color>
+
+	<Color x:Key="Yellow">#ffcc00</Color>
+	<Color x:Key="YellowDark">#ffd60a</Color>
+
+	<Color x:Key="Green">#34c759</Color>
+	<Color x:Key="GreenDark">#30d158</Color>
+
+	<Color x:Key="Teal">#5ac8fa</Color>
+	<Color x:Key="TealDark">#64d3ff</Color>
+
+	<Color x:Key="Blue">#007bff</Color>
+	<Color x:Key="BlueDark">#0a84ff</Color>
+
+	<Color x:Key="Indigo">#5856d6</Color>
+	<Color x:Key="IndigoDark">#5e5ce6</Color>
+
+	<Color x:Key="Purple">#af52de</Color>
+	<Color x:Key="PurpleDark">#bf5af2</Color>
+
+	<Color x:Key="Pink">#ff2d54</Color>
+	<Color x:Key="PinkDark">#ff375f</Color>
 
 
-    <Color x:Key="Gray">#8e8e93</Color>
-    <Color x:Key="GrayDark">#98989d</Color>
-    
-    <Color x:Key="Gray2">#aeaeb2</Color>
-    <Color x:Key="Gray2Dark">#636366</Color>
-    
-    <Color x:Key="Gray3">#c7c7cc</Color>
-    <Color x:Key="Gray3Dark">#48484a</Color>
-    
-    <Color x:Key="Gray4">#d1d1d6</Color>
-    <Color x:Key="Gray4Dark">#3a3a3c</Color>
-    
-    <Color x:Key="Gray5">#e5e5ea</Color>
-    <Color x:Key="Gray5Dark">#2c2c2e</Color>
-    
-    <Color x:Key="Gray6">#f2f2f7</Color>
-    <Color x:Key="Gray6Dark">#1c1c1e</Color>
-    <Color x:Key="Gray6Alpha50">#80f2f2f7</Color>
-    <Color x:Key="Gray6DarkAlpha50">#801c1c1e</Color>
-    <Color x:Key="Gray6Alpha0">#00f2f2f7</Color>
-    <Color x:Key="Gray6DarkAlpha0">#001c1c1e</Color>
+	<Color x:Key="Gray">#8e8e93</Color>
+	<Color x:Key="GrayDark">#98989d</Color>
 
-    
-    <Color x:Key="Foreground">#000</Color>
-    <Color x:Key="ForegroundDark">#fff</Color>
+	<Color x:Key="Gray2">#aeaeb2</Color>
+	<Color x:Key="Gray2Dark">#636366</Color>
 
-    <Color x:Key="Background">#fff</Color>
-    <Color x:Key="BackgroundDark">#000</Color>
+	<Color x:Key="Gray3">#c7c7cc</Color>
+	<Color x:Key="Gray3Dark">#48484a</Color>
+
+	<Color x:Key="Gray4">#d1d1d6</Color>
+	<Color x:Key="Gray4Dark">#3a3a3c</Color>
+
+	<Color x:Key="Gray5">#e5e5ea</Color>
+	<Color x:Key="Gray5Dark">#2c2c2e</Color>
+
+	<Color x:Key="Gray6">#f2f2f7</Color>
+	<Color x:Key="Gray6Dark">#1c1c1e</Color>
+	<Color x:Key="Gray6Alpha50">#80f2f2f7</Color>
+	<Color x:Key="Gray6DarkAlpha50">#801c1c1e</Color>
+	<Color x:Key="Gray6Alpha0">#00f2f2f7</Color>
+	<Color x:Key="Gray6DarkAlpha0">#001c1c1e</Color>
 
 
-    <Color x:Key="Primary">#007bff</Color>
-    <Color x:Key="PrimaryDark">#0a84ff</Color>
+	<Color x:Key="Foreground">#000</Color>
+	<Color x:Key="ForegroundDark">#fff</Color>
+
+	<Color x:Key="Background">#fff</Color>
+	<Color x:Key="BackgroundDark">#000</Color>
+
+	<Color x:Key="BackgroundCards">#f2f2f7</Color>
+	<Color x:Key="BackgroundCardsDark">#000</Color>
+
+
+	<Color x:Key="Primary">#007bff</Color>
+	<Color x:Key="PrimaryDark">#0a84ff</Color>
 
 </ResourceDictionary>

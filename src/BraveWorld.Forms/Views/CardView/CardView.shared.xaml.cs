@@ -5,23 +5,38 @@ using Xamarin.CommunityToolkit;
 using BraveWorld.Forms.Classes;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Xamarin.Forms.PancakeView;
 
 namespace BraveWorld.Forms.Views
 {
-    public partial class CardView : Frame
+    public partial class CardView : Grid
     {
         #region Properties
-        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(
-            propertyName: nameof(TextColor),
-            returnType: typeof(Color?),
+        public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(
+            propertyName: nameof(ForegroundColor),
+            returnType: typeof(Color),
             declaringType: typeof(CardView),
             defaultValue: null
         );
 
-        public Color? TextColor
+        public Color ForegroundColor
         {
-            get => (Color?)GetValue(TextColorProperty);
-            set => SetValue(TextColorProperty, value);
+            get => (Color)GetValue(ForegroundColorProperty);
+            set => SetValue(ForegroundColorProperty, value);
+        }
+
+
+        public static readonly BindableProperty TintColorProperty = BindableProperty.Create(
+            propertyName: nameof(TintColor),
+            returnType: typeof(Color),
+            declaringType: typeof(CardView),
+            defaultValue: null
+        );
+
+        public Color TintColor
+        {
+            get => (Color)GetValue(TintColorProperty);
+            set => SetValue(TintColorProperty, value);
         }
 
 
@@ -73,6 +88,60 @@ namespace BraveWorld.Forms.Views
             get => (ICommand)GetValue(CommandProperty);
             set => SetValue(CommandProperty, value);
         }
+
+
+        public static readonly BindableProperty BannerImageProperty = BindableProperty.Create(
+            propertyName: nameof(BannerImage),
+            returnType: typeof(ImageSource),
+            declaringType: typeof(CardView),
+            defaultValue: null
+        );
+
+        public ImageSource BannerImage
+        {
+            get => (ImageSource)GetValue(BannerImageProperty);
+            set
+            {
+                SetValue(BannerImageProperty, value);
+                ShowBannerImage(value != null);
+            }
+        }
+
+
+        public static readonly BindableProperty IsBusyProperty = BindableProperty.Create(
+            propertyName: nameof(IsBusy),
+            returnType: typeof(bool),
+            declaringType: typeof(CardView),
+            defaultValue: false
+        );
+
+        public bool IsBusy
+        {
+            get => (bool)GetValue(IsBusyProperty);
+            set => SetValue(IsBusyProperty, value);
+        }
+
+
+        //public enum ECardStyle
+        //{
+        //    Default,
+        //    Image
+        //}
+
+        //public static readonly BindableProperty CardStyleProperty = BindableProperty.Create(
+        //    propertyName: nameof(CardStyle),
+        //    returnType: typeof(ECardStyle),
+        //    declaringType: typeof(CardView),
+        //    defaultValue: ECardStyle.Default
+        //);
+
+        //public ECardStyle CardStyle
+        //{
+        //    get => (ECardStyle)GetValue(CardStyleProperty);
+        //    set => SetValue(CardStyleProperty, value);
+        //}
+
+
         #endregion
 
         public CardView()
@@ -84,25 +153,60 @@ namespace BraveWorld.Forms.Views
         {
             base.OnPropertyChanged(propertyName);
 
+            if (propertyName == BannerImageProperty.PropertyName)
+                SetBannerImage(BannerImage);
 
-            //if(propertyName == TextColorProperty.PropertyName)
-            //{
-            //    if(TextColor != null)
-            //    {
-            //        titleLabel.TextColor = TextColor ?? Color.Default;
-            //        headlineLabel.TextColor = TextColor ?? Color.Default;
-            //        messageLabel.TextColor = TextColor ?? Color.Default;
-            //    }
-            //}
+            if (propertyName == ForegroundColorProperty.PropertyName)
+                UpdateForegroundColor(ForegroundColor);
 
-            if (propertyName == TitleProperty.PropertyName)
-                titleLabel.Text = Title;
 
-            if (propertyName == HeadlineProperty.PropertyName)
-                headlineLabel.Text = Headline;
+            //if (propertyName == TitleProperty.PropertyName)
+            //    SetLabelTextAndVisibility(cardTitle, Title);
 
-            if (propertyName == MessageProperty.PropertyName)
-                messageLabel.Text = Message;
+            //if (propertyName == HeadlineProperty.PropertyName)
+            //    SetLabelTextAndVisibility(cardHeadline, Headline);
+
+            //if (propertyName == MessageProperty.PropertyName)
+            //    SetLabelTextAndVisibility(cardMessage, Message);
         }
+
+
+        private void SetLabelTextAndVisibility(Label label, string text)
+        {
+            bool _hasText = !string.IsNullOrEmpty(text);
+
+            label.Text = text;
+            label.HeightRequest = (_hasText) ? -1 : 0;
+            label.IsVisible = _hasText;
+        }
+
+
+        private void SetBannerImage(ImageSource source)
+        {
+            bool _hasImage = source != null;
+            cardImage.Source = source;
+            ShowBannerImage(_hasImage);
+        }
+
+        private void ShowBannerImage(bool isVisible)
+        {
+            cardImage.IsVisible = isVisible;
+            cardImage.HeightRequest = isVisible ? 250 : 0;
+            cardImage.Opacity = isVisible ? 1 : 0;
+        }
+
+        private void UpdateForegroundColor(Color? color = null)
+        {
+            var _foregroundColor = color ?? ForegroundColor;
+            cardTitle.TextColor = _foregroundColor;
+            cardHeadline.TextColor = _foregroundColor;
+            cardMessage.TextColor = _foregroundColor;
+        }
+
+        //private void UpdateStyling()
+        //{
+        //    var style = CardStyle;
+        //    ShowBannerImage(HasImage);
+        //}
     }
 }

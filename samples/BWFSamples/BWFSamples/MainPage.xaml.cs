@@ -38,11 +38,10 @@ namespace BWFSamples
 
             viewsMaster.ItemSelected += ViewsMaster_ItemSelected;
 
-
-            ShowChangelogWindow();
-
-            //if (VersionTracking.IsFirstLaunchForCurrentBuild)
-            //    ShowChangelogWindow();
+#if !DEBUG
+            if (VersionTracking.IsFirstLaunchForCurrentBuild)
+                ShowChangelogWindow();
+#endif
         }
 
         private async Task ViewsMaster_ItemSelected(ViewDefinitionModel viewDefinition)
