@@ -12,6 +12,8 @@ jobs:
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v1
+        with:
+          configuration: "configuration.json"
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
 
@@ -20,6 +22,8 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
+          draft: true
+          prerelease: true
           body: ${{steps.github_release.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
