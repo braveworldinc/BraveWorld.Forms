@@ -167,7 +167,17 @@
 		<Setter Property="xct:TouchEffect.PressedAnimationDuration" Value="250"/>
 		<Setter Property="xct:TouchEffect.PressedScale" Value="0.95"/>
 	</Style>
-	
+
+	<Style x:Key="CardBaseInteractableShadowed" TargetType="Frame" BasedOn="{StaticResource CardBaseInteractable}">
+		<Setter Property="xct:ShadowEffect.Color" Value="Black"/>
+		<Setter Property="xct:ShadowEffect.OffsetY" Value="15"/>
+		<Setter Property="xct:ShadowEffect.Opacity" Value="0.1"/>
+		<Setter Property="xct:ShadowEffect.Radius" Value="15"/>
+	</Style>
+
+
+
+
 	<Style x:Key="CardShadow" TargetType="yummy:PancakeView">
 		<Setter Property="Margin" Value="10"/>
 		<Setter Property="IsClippedToBounds" Value="False"/>

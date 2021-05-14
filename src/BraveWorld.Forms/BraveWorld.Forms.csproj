@@ -16,7 +16,7 @@
     <Title>BraveWorld.Forms</Title>
     <Description>An SDK-styled Xamarin.Forms library used at BraveWorld, Inc</Description>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <ReleaseVersion>0.0.1.25</ReleaseVersion>
+    <ReleaseVersion>0.0.1.26</ReleaseVersion>
     <Version>$(ReleaseVersion)</Version>
     <AssemblyVersion>$(ReleaseVersion)</AssemblyVersion>
     <AssemblyFileVersion>$(ReleaseVersion)</AssemblyFileVersion>
@@ -96,7 +96,7 @@
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0-pre2" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
     <PackageReference Include="Xamarin.Forms.Skeleton" Version="2.0.0" />

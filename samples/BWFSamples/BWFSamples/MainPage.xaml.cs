@@ -23,7 +23,7 @@ namespace BWFSamples
         private string[] changelog => new[]
         {
             new ChangeLogEntry(ChangeLogEntryType.Updated, $"{BraveLibrary.Name} to {BraveLibrary.Version}").ToString(),
-            new ChangeLogEntry(ChangeLogEntryType.Updated, "Cards to use PancakeView").ToString()
+            new ChangeLogEntry(ChangeLogEntryType.Updated, "Preliminary Cards Support").ToString()
         };
 
 
@@ -38,10 +38,10 @@ namespace BWFSamples
 
             viewsMaster.ItemSelected += ViewsMaster_ItemSelected;
 
-#if !DEBUG
+//#if !DEBUG
             if (VersionTracking.IsFirstLaunchForCurrentBuild)
                 ShowChangelogWindow();
-#endif
+//#endif
         }
 
         private async Task ViewsMaster_ItemSelected(ViewDefinitionModel viewDefinition)

@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms.PancakeView;
 using BraveWorld.Forms.Extensions;
+using System.ComponentModel;
 
 namespace BraveWorld.Forms.Views
 {
@@ -81,6 +82,19 @@ namespace BraveWorld.Forms.Views
             set => SetValue(IsBusyProperty, value);
         }
 
+        public static readonly BindableProperty InheritShadowColorFromBackgroundProperty = BindableProperty.Create(
+            propertyName: nameof(InheritShadowColorFromBackground),
+            returnType: typeof(bool),
+            declaringType: typeof(CardViewBase),
+            defaultValue: false
+        );
+
+        public bool InheritShadowColorFromBackground
+        {
+            get => (bool)GetValue(InheritShadowColorFromBackgroundProperty);
+            set => SetValue(InheritShadowColorFromBackgroundProperty, value);
+        }
+
 
         #endregion
 
@@ -121,11 +135,11 @@ namespace BraveWorld.Forms.Views
         {
             base.OnPropertyChanged(propertyName);
 
-            if (propertyName == CardBackgroundColorProperty.PropertyName)
-                SetCardBackgroundColor(CardBackgroundColor);
+            //if (propertyName == CardBackgroundColorProperty.PropertyName)
+            //    SetCardBackgroundColor(CardBackgroundColor);
 
-            if (propertyName == ShadowColorProperty.PropertyName)
-                SetShadowColor(ShadowColor);
+            //if (propertyName == ShadowColorProperty.PropertyName)
+            //    SetShadowColor(ShadowColor);
         }
 
 
@@ -133,7 +147,7 @@ namespace BraveWorld.Forms.Views
         {
             if (color != null)
             {
-                RootPancake.BackgroundColor = color.Value;
+                //RootPancake.BackgroundColor = color.Value;
                 CardFrame.BackgroundColor = color.Value;
 
                 //pancakeView.BackgroundColor = color.Value;
@@ -151,10 +165,10 @@ namespace BraveWorld.Forms.Views
         {
             if(color != null)
             {
-                RootPancake.Shadow = CreateShadow(color.Value.WithAlpha(1), 0.3f);
+                //RootPancake.Shadow = CreateShadow(color.Value.WithAlpha(1), 0.3f);
             } else
             {
-                RootPancake.Shadow = CreateShadow(Color.Black);
+                //RootPancake.Shadow = CreateShadow(Color.Black);
             }
         }
 

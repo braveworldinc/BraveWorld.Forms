@@ -23,8 +23,8 @@
 		<!--<yummy:PancakeView.Shadow>
 			<yummy:DropShadow Color="{Binding CardColor}" Offset="0,15" BlurRadius="15" Opacity="0.1"/>
 		</yummy:PancakeView.Shadow>-->
-
-		<Frame x:Name="cardFrame" Style="{DynamicResource CardBase}">
+		
+		<Frame x:Name="cardFrame" Style="{DynamicResource CardBaseInteractable}" xct:TouchEffect.Command="{Binding CardTapCommand}">
 			<StackLayout>
 				<Image
 					x:Name="cardImage"

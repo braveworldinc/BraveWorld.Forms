@@ -16,15 +16,9 @@ namespace BWFSamples.ViewModels.Views
         {
             new CardDefinition
             {
-                Title = "This is Blue",
-                Message = "Message goes here",
-                CardColor = SystemColors.Blue.LightColor.WithAlpha(0.5)
-            },
-            new CardDefinition
-            {
-                Title = "This isn't a color",
-                Headline = "Headline",
-                Message = "Message goes here"
+                Title = "This is a Card!",
+                Headline = "More than a button",
+                Message = "Provides a base content view styled and ready to go."
             },
             new CardDefinition
             {
@@ -60,7 +54,6 @@ namespace BWFSamples.ViewModels.Views
         public string Title { get; set; } = string.Empty;
         public string Headline { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
-        public string StyleClass { get; set; } = string.Empty;
         public ImageSource Image { get; set; } = null;
         public Color? TextColor { get; set; } = null;
         public Color? CardColor { get; set; } = null;

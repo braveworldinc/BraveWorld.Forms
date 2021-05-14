@@ -18,13 +18,13 @@
 	</ContentView.Resources>
 	<ContentView.ControlTemplate>
 		<ControlTemplate>
-			<yummy:PancakeView
+			<!--<yummy:PancakeView
 				x:Name="pancakeView"
 				Style="{DynamicResource YummyCardBaseInteractable}"
 				xct:TouchEffect.Command="{Binding Command}">
-				<!--<yummy:PancakeView.Shadow>
-					<yummy:DropShadow Color="{Binding CardColor}" Offset="0,15" BlurRadius="15" Opacity="0.1"/>
-				</yummy:PancakeView.Shadow>-->
+				<yummy:PancakeView.Shadow>
+					<yummy:DropShadow Color="{Binding CardBackgroundColor}" Offset="0,15" BlurRadius="15" Opacity="0.1"/>
+				</yummy:PancakeView.Shadow>
 
 				<Frame x:Name="cardFrame" Style="{DynamicResource CardBase}" BackgroundColor="{AppThemeBinding Default=White, Dark={StaticResource Gray6Dark}}">
 					<StackLayout>
@@ -34,7 +34,18 @@
 							IsClippedToBounds="True"/>
 					</StackLayout>
 				</Frame>
-			</yummy:PancakeView>
+			</yummy:PancakeView>-->
+
+			<Frame x:Name="cardFrame"
+				Style="{DynamicResource CardBaseInteractableShadowed}"
+				xct:TouchEffect.Command="{Binding Command}">
+				<StackLayout>
+					<ContentPresenter
+						InputTransparent="True"
+						CascadeInputTransparent="True"
+						IsClippedToBounds="True"/>
+				</StackLayout>
+			</Frame>
 		</ControlTemplate>
 	</ContentView.ControlTemplate>
 </ContentView>

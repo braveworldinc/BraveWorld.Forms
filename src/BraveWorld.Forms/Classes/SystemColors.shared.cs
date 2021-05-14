@@ -24,6 +24,10 @@ namespace BraveWorld.Forms
         public static SystemColor Gray5 => new SystemColor(nameof(Gray5), Color.FromRgb(229, 229, 234), Color.FromRgb(44, 44, 46));
         public static SystemColor Gray6 => new SystemColor(nameof(Gray6), Color.FromRgb(242, 242, 247), Color.FromRgb(28, 28, 30));
 
+        public static SystemColor CardsBackground => new SystemColor(nameof(CardsBackground), Color.White, Gray6.DarkColor);
+        public static SystemColor GroupedBackground => new SystemColor(nameof(GroupedBackground), Gray6.LightColor, Color.Black);
+
+
 
         public static void SetAppThemeColor(this BindableObject bindableObject, BindableProperty property, SystemColor systemColor)
         {
@@ -47,7 +51,9 @@ namespace BraveWorld.Forms
             Gray3,
             Gray4,
             Gray5,
-            Gray6
+            Gray6,
+            CardsBackground,
+            GroupedBackground
         };
     }
 }
