@@ -7,6 +7,7 @@ using BraveWorld.Forms.Classes;
 using System.Collections.ObjectModel;
 using BraveWorld.Forms;
 using BraveWorld.Forms.Extensions;
+using ECardStyle = BraveWorld.Forms.Views.CardViewBase.ECardStyle;
 
 namespace BWFSamples.ViewModels.Views
 {
@@ -19,6 +20,14 @@ namespace BWFSamples.ViewModels.Views
                 Title = "This is a Card!",
                 Headline = "More than a button",
                 Message = "Provides a base content view styled and ready to go."
+            },
+            new CardDefinition
+            {
+                Title = "This is Blue",
+                Headline = $"Hex: {SystemColors.Blue.LightColor.ToHexString()}",
+                Message = "Sometimes you just need something colored for more emphasis.",
+                CardStyle = ECardStyle.Colored,
+                CardColor = SystemColors.Blue.LightColor
             },
             new CardDefinition
             {
@@ -55,7 +64,7 @@ namespace BWFSamples.ViewModels.Views
         public string Headline { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
         public ImageSource Image { get; set; } = null;
-        public Color? TextColor { get; set; } = null;
+        public ECardStyle CardStyle { get; set; } = ECardStyle.Default;
         public Color? CardColor { get; set; } = null;
         public ICommand CardTapCommand { get; set; } = null;
     }

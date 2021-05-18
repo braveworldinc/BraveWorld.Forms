@@ -16,7 +16,7 @@
     <Title>BraveWorld.Forms</Title>
     <Description>An SDK-styled Xamarin.Forms library used at BraveWorld, Inc</Description>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <ReleaseVersion>0.0.1.26</ReleaseVersion>
+    <ReleaseVersion>0.0.1.27</ReleaseVersion>
     <Version>$(ReleaseVersion)</Version>
     <AssemblyVersion>$(ReleaseVersion)</AssemblyVersion>
     <AssemblyFileVersion>$(ReleaseVersion)</AssemblyFileVersion>

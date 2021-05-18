@@ -18,34 +18,33 @@
 	</ContentView.Resources>
 	<ContentView.ControlTemplate>
 		<ControlTemplate>
-			<!--<yummy:PancakeView
-				x:Name="pancakeView"
-				Style="{DynamicResource YummyCardBaseInteractable}"
-				xct:TouchEffect.Command="{Binding Command}">
-				<yummy:PancakeView.Shadow>
-					<yummy:DropShadow Color="{Binding CardBackgroundColor}" Offset="0,15" BlurRadius="15" Opacity="0.1"/>
-				</yummy:PancakeView.Shadow>
+			<Grid Padding="10">
+				<yummy:PancakeView
+					x:Name="pancakeView"
+					Style="{DynamicResource YummyCardBaseInteractable}"
+					xct:TouchEffect.Command="{Binding Command}">
 
-				<Frame x:Name="cardFrame" Style="{DynamicResource CardBase}" BackgroundColor="{AppThemeBinding Default=White, Dark={StaticResource Gray6Dark}}">
+					<Frame x:Name="cardFrame" Style="{DynamicResource CardBase}">
+						<StackLayout>
+							<ContentPresenter
+								InputTransparent="True"
+								CascadeInputTransparent="True"
+								IsClippedToBounds="True"/>
+						</StackLayout>
+					</Frame>
+				</yummy:PancakeView>
+
+				<!--<Frame x:Name="cardFrame"
+					Style="{DynamicResource CardBaseInteractableShadowed}"
+					xct:TouchEffect.Command="{Binding Command}">
 					<StackLayout>
 						<ContentPresenter
 							InputTransparent="True"
 							CascadeInputTransparent="True"
 							IsClippedToBounds="True"/>
 					</StackLayout>
-				</Frame>
-			</yummy:PancakeView>-->
-
-			<Frame x:Name="cardFrame"
-				Style="{DynamicResource CardBaseInteractableShadowed}"
-				xct:TouchEffect.Command="{Binding Command}">
-				<StackLayout>
-					<ContentPresenter
-						InputTransparent="True"
-						CascadeInputTransparent="True"
-						IsClippedToBounds="True"/>
-				</StackLayout>
-			</Frame>
+				</Frame>-->
+			</Grid>
 		</ControlTemplate>
 	</ContentView.ControlTemplate>
 </ContentView>

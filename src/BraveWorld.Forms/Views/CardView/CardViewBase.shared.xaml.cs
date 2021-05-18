@@ -14,46 +14,17 @@ namespace BraveWorld.Forms.Views
     public partial class CardViewBase : ContentView
     {
         #region Properties
-
-
-        public static readonly BindableProperty TintColorProperty = BindableProperty.Create(
-            propertyName: nameof(TintColor),
-            returnType: typeof(Color),
-            declaringType: typeof(CardView),
-            defaultValue: null
-        );
-
-        public Color TintColor
-        {
-            get => (Color)GetValue(TintColorProperty);
-            set => SetValue(TintColorProperty, value);
-        }
-
-
-        public static readonly BindableProperty CardBackgroundColorProperty = BindableProperty.Create(
-            propertyName: nameof(CardBackgroundColor),
+        public static readonly BindableProperty CardColorProperty = BindableProperty.Create(
+            propertyName: nameof(CardColor),
             returnType: typeof(Color),
             declaringType: typeof(CardViewBase),
             defaultValue: null
         );
 
-        public Color CardBackgroundColor
+        public Color CardColor
         {
-            get => (Color)GetValue(CardBackgroundColorProperty);
-            set => SetValue(CardBackgroundColorProperty, value);
-        }
-
-        public static readonly BindableProperty ShadowColorProperty = BindableProperty.Create(
-            propertyName: nameof(ShadowColor),
-            returnType: typeof(Color),
-            declaringType: typeof(CardViewBase),
-            defaultValue: null
-        );
-
-        public Color ShadowColor
-        {
-            get => (Color)GetValue(ShadowColorProperty);
-            set => SetValue(ShadowColorProperty, value);
+            get => (Color)GetValue(CardColorProperty);
+            set => SetValue(CardColorProperty, value);
         }
 
 
@@ -69,6 +40,7 @@ namespace BraveWorld.Forms.Views
             set => SetValue(CommandProperty, value);
         }
 
+
         public static readonly BindableProperty IsBusyProperty = BindableProperty.Create(
             propertyName: nameof(IsBusy),
             returnType: typeof(bool),
@@ -82,20 +54,25 @@ namespace BraveWorld.Forms.Views
             set => SetValue(IsBusyProperty, value);
         }
 
-        public static readonly BindableProperty InheritShadowColorFromBackgroundProperty = BindableProperty.Create(
-            propertyName: nameof(InheritShadowColorFromBackground),
-            returnType: typeof(bool),
-            declaringType: typeof(CardViewBase),
-            defaultValue: false
-        );
 
-        public bool InheritShadowColorFromBackground
+        public enum ECardStyle
         {
-            get => (bool)GetValue(InheritShadowColorFromBackgroundProperty);
-            set => SetValue(InheritShadowColorFromBackgroundProperty, value);
+            Default,
+            Colored
         }
 
+        public static readonly BindableProperty CardStyleProperty = BindableProperty.Create(
+            propertyName: nameof(CardStyle),
+            returnType: typeof(ECardStyle),
+            declaringType: typeof(CardViewBase),
+            defaultValue: ECardStyle.Default
+        );
 
+        public ECardStyle CardStyle
+        {
+            get => (ECardStyle)GetValue(CardStyleProperty);
+            set => SetValue(CardStyleProperty, value);
+        }
         #endregion
 
 
@@ -135,11 +112,31 @@ namespace BraveWorld.Forms.Views
         {
             base.OnPropertyChanged(propertyName);
 
+            if (propertyName == CardStyleProperty.PropertyName)
+                SetStyle(CardStyle);
+
             //if (propertyName == CardBackgroundColorProperty.PropertyName)
             //    SetCardBackgroundColor(CardBackgroundColor);
 
             //if (propertyName == ShadowColorProperty.PropertyName)
             //    SetShadowColor(ShadowColor);
+        }
+
+
+        private void SetStyle(ECardStyle style)
+        {
+            switch (style)
+            {
+                case ECardStyle.Colored:
+                    Color _color = CardColor;
+
+                    CardFrame.BackgroundColor = _color.WithAlpha(0.7);
+                    //Xamarin.CommunityToolkit.Effects.ShadowEffect.SetColor(CardFrame, SystemColors.Blue.LightColor);
+                    RootPancake.Shadow = CreateShadow(_color, 0.3f);
+                    break;
+            }
+
+            Console.WriteLine();
         }
 
 
@@ -149,8 +146,7 @@ namespace BraveWorld.Forms.Views
             {
                 //RootPancake.BackgroundColor = color.Value;
                 CardFrame.BackgroundColor = color.Value;
-
-                //pancakeView.BackgroundColor = color.Value;
+                //RootPancake.BackgroundColor = color.Value;
                 //cardFrame.BackgroundColor = color.Value;
             }
             else

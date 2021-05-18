@@ -42,45 +42,44 @@
 			<CollectionView.ItemTemplate>
 				<DataTemplate x:DataType="vm:CardDefinition">
 					<StackLayout>
-						<Grid Padding="10">
-							<!--<Frame Style="{DynamicResource CardBaseInteractable}"
-								Padding="25"
-								xct:ShadowEffect.Color="Red"
-								xct:ShadowEffect.OffsetY="15"
-								xct:ShadowEffect.Opacity="0.3">
-								<Label Text="meh"/>
-							</Frame>-->
-							<bwf:CardViewBase
-								xct:TouchEffect.Command="{Binding CardTapCommand}"
-								CardBackgroundColor="{Binding CardColor}">
-								<StackLayout>
-									<Image
-									HeightRequest="250"
-									HorizontalOptions="FillAndExpand"
-									Aspect="AspectFill"
-									BackgroundColor="Gray"
-									Source="{Binding Image}"
-									IsVisible="{Binding Image, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
-									<StackLayout Style="{DynamicResource CardInnerContent}">
-										<Label
-											Style="{DynamicResource CardHeadline}"
-											Text="{Binding Headline}"
-											IsVisible="{Binding Headline, Converter={StaticResource IsNotNullOrEmptyConverter}}"
-											/>
-										<Label
-											Style="{DynamicResource CardTitle}"
-											Text="{Binding Title}"
-											IsVisible="{Binding Title, Converter={StaticResource IsNotNullOrEmptyConverter}}"
-											/>
-										<Label
-											Style="{DynamicResource CardMessage}"
-											Text="{Binding Message}"
-											IsVisible="{Binding Message, Converter={StaticResource IsNotNullOrEmptyConverter}}"
-											/>
-									</StackLayout>
+						<!--<Frame Style="{DynamicResource CardBaseInteractable}"
+							Padding="25"
+							xct:ShadowEffect.Color="Red"
+							xct:ShadowEffect.OffsetY="15"
+							xct:ShadowEffect.Opacity="0.3">
+							<Label Text="meh"/>
+						</Frame>-->
+						<bwf:CardViewBase
+							xct:TouchEffect.Command="{Binding CardTapCommand}"
+							CardColor="{Binding CardColor}"
+							CardStyle="{Binding CardStyle}">
+							<StackLayout>
+								<Image
+								HeightRequest="250"
+								HorizontalOptions="FillAndExpand"
+								Aspect="AspectFill"
+								BackgroundColor="Gray"
+								Source="{Binding Image}"
+								IsVisible="{Binding Image, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
+								<StackLayout Style="{DynamicResource CardInnerContent}">
+									<Label
+										Style="{DynamicResource CardHeadline}"
+										Text="{Binding Headline}"
+										IsVisible="{Binding Headline, Converter={StaticResource IsNotNullOrEmptyConverter}}"
+										/>
+									<Label
+										Style="{DynamicResource CardTitle}"
+										Text="{Binding Title}"
+										IsVisible="{Binding Title, Converter={StaticResource IsNotNullOrEmptyConverter}}"
+										/>
+									<Label
+										Style="{DynamicResource CardMessage}"
+										Text="{Binding Message}"
+										IsVisible="{Binding Message, Converter={StaticResource IsNotNullOrEmptyConverter}}"
+										/>
 								</StackLayout>
-							</bwf:CardViewBase>
-						</Grid>
+							</StackLayout>
+						</bwf:CardViewBase>
 
 							<!--<Frame Style="{DynamicResource CardBaseInteractable}" xct:TouchEffect.Command="{Binding CardTapCommand}">
 								<StackLayout>
