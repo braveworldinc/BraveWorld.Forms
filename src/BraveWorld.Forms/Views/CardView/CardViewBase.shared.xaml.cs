@@ -112,6 +112,9 @@ namespace BraveWorld.Forms.Views
         {
             base.OnPropertyChanged(propertyName);
 
+            if (propertyName == CommandProperty.PropertyName)
+                SetInteractability(Command);
+
             if (propertyName == CardStyleProperty.PropertyName)
                 SetStyle(CardStyle);
 
@@ -122,6 +125,17 @@ namespace BraveWorld.Forms.Views
             //    SetShadowColor(ShadowColor);
         }
 
+
+        private void SetInteractability(ICommand command)
+        {
+            if(command != null)
+            {
+                Console.WriteLine();
+            } else
+            {
+                Console.WriteLine();
+            }
+        }
 
         private void SetStyle(ECardStyle style)
         {

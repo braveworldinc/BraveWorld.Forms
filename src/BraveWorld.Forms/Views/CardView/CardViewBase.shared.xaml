@@ -27,7 +27,7 @@
 					<Frame x:Name="cardFrame" Style="{DynamicResource CardBase}">
 						<StackLayout>
 							<ContentPresenter
-								InputTransparent="True"
+								InputTransparent="False"
 								CascadeInputTransparent="True"
 								IsClippedToBounds="True"/>
 						</StackLayout>

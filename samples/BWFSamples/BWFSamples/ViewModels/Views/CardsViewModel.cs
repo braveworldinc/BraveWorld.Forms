@@ -27,7 +27,13 @@ namespace BWFSamples.ViewModels.Views
                 Headline = $"Hex: {SystemColors.Blue.LightColor.ToHexString()}",
                 Message = "Sometimes you just need something colored for more emphasis.",
                 CardStyle = ECardStyle.Colored,
-                CardColor = SystemColors.Blue.LightColor
+                CardColor = SystemColors.Blue.LightColor,
+                CardTapCommand = new Command(() => {
+                    Console.WriteLine("Card Tapped!");
+                }),
+                ButtonCommand = new Command(() => {
+                    Console.WriteLine("Button Tapped!");
+                })
             },
             new CardDefinition
             {
@@ -35,8 +41,8 @@ namespace BWFSamples.ViewModels.Views
                 Headline = "Now Trending",
                 Message = "Stream new Handmaid's Tale, Without Remorse, and the Falcon finale.",
                 Image = ImageSource.FromResource("BWFSamples.Resources.Images.adult-3086304_1920.jpg"),
-                CardTapCommand = new Command(() => {
-                    Console.WriteLine("Card Tapped!");
+                ButtonCommand = new Command(() => {
+                    Console.WriteLine("Button Tapped!");
                 })
             },
             new CardDefinition
@@ -44,10 +50,7 @@ namespace BWFSamples.ViewModels.Views
                 Title = "Man, look at this landscape!",
                 Headline = "Now Trending",
                 Message = "Stream new Handmaid's Tale, Without Remorse, and the Falcon finale.",
-                Image = ImageSource.FromResource("BWFSamples.Resources.Images.pexels-photo-1323550.jpeg"),
-                CardTapCommand = new Command(() => {
-                    Console.WriteLine("Card Tapped!");
-                })
+                Image = ImageSource.FromResource("BWFSamples.Resources.Images.pexels-photo-1323550.jpeg")
             }
         };
 
@@ -67,5 +70,6 @@ namespace BWFSamples.ViewModels.Views
         public ECardStyle CardStyle { get; set; } = ECardStyle.Default;
         public Color? CardColor { get; set; } = null;
         public ICommand CardTapCommand { get; set; } = null;
+        public ICommand ButtonCommand { get; set; } = null;
     }
 }

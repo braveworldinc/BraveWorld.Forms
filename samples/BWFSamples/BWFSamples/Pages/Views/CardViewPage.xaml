@@ -53,32 +53,41 @@
 							xct:TouchEffect.Command="{Binding CardTapCommand}"
 							CardColor="{Binding CardColor}"
 							CardStyle="{Binding CardStyle}">
-							<StackLayout>
-								<Image
-								HeightRequest="250"
-								HorizontalOptions="FillAndExpand"
-								Aspect="AspectFill"
-								BackgroundColor="Gray"
-								Source="{Binding Image}"
-								IsVisible="{Binding Image, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
-								<StackLayout Style="{DynamicResource CardInnerContent}">
-									<Label
-										Style="{DynamicResource CardHeadline}"
-										Text="{Binding Headline}"
-										IsVisible="{Binding Headline, Converter={StaticResource IsNotNullOrEmptyConverter}}"
-										/>
-									<Label
-										Style="{DynamicResource CardTitle}"
-										Text="{Binding Title}"
-										IsVisible="{Binding Title, Converter={StaticResource IsNotNullOrEmptyConverter}}"
-										/>
-									<Label
-										Style="{DynamicResource CardMessage}"
-										Text="{Binding Message}"
-										IsVisible="{Binding Message, Converter={StaticResource IsNotNullOrEmptyConverter}}"
-										/>
+							<Grid>
+								<StackLayout>
+									<Image
+										HeightRequest="250"
+										HorizontalOptions="FillAndExpand"
+										Aspect="AspectFill"
+										BackgroundColor="Gray"
+										Source="{Binding Image}"
+										IsVisible="{Binding Image, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>
+									<StackLayout Style="{DynamicResource CardInnerContent}">
+										<Label
+											Style="{DynamicResource CardHeadline}"
+											Text="{Binding Headline}"
+											IsVisible="{Binding Headline, Converter={StaticResource IsNotNullOrEmptyConverter}}"
+											/>
+										<Label
+											Style="{DynamicResource CardTitle}"
+											Text="{Binding Title}"
+											IsVisible="{Binding Title, Converter={StaticResource IsNotNullOrEmptyConverter}}"
+											/>
+										<Label
+											Style="{DynamicResource CardMessage}"
+											Text="{Binding Message}"
+											IsVisible="{Binding Message, Converter={StaticResource IsNotNullOrEmptyConverter}}"
+											/>
+									</StackLayout>
 								</StackLayout>
-							</StackLayout>
+								<!--<Button Text="Button"
+									Style="{DynamicResource ButtonFilled}"
+									VerticalOptions="Start"
+									HorizontalOptions="End"
+									BackgroundColor="#66ffffff"
+									xct:TouchEffect.Command="{Binding ButtonCommand}"
+									IsVisible="{Binding ButtonCommand, Converter={StaticResource IsNotNullOrEmptyConverter}}"/>-->
+							</Grid>
 						</bwf:CardViewBase>
 
 							<!--<Frame Style="{DynamicResource CardBaseInteractable}" xct:TouchEffect.Command="{Binding CardTapCommand}">
